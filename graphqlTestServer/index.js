@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
+const parser = require('../Parser/queryParser/.js');
 
 const app = express();
 const port = 3000;
