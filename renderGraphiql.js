@@ -1,5 +1,8 @@
 const path = require('path');
-module.exports = ()=>`<!DOCTYPE html>
+const fs = require('fs');
+module.exports = ()=>{
+    const content = fs.readFileSync(path.join(__dirname,'bundle.js'), 'utf-8');
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +12,7 @@ module.exports = ()=>`<!DOCTYPE html>
 </head>
 <body>
     <div id="root"></div>
-    <script src='${path.join(__dirname,'bundle.js')}'></script>
+    <script>${content}</script>
 </body>
 </html>`
+}
