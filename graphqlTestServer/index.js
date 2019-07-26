@@ -8,11 +8,13 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
-app.use('/graphql', (req, res, next) =>
+app.use('/graphql', (req, res, next) => {
   // if (req.body.query !== undefined) {
-  //   console.log(parser(req.body.query));
+  //   console.log(JSON.stringify(parser(req.body.query)));
   // }
-  next(),
+
+  next();
+},
 graphqlHTTP({
   schema,
   graphiql: true,
