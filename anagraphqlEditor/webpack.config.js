@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: process.env.NODE_ENV,
     entry: path.join(__dirname, 'src', 'client', 'index.js' ),
     output: {
         publicPath: path.join(__dirname, 'dist'),
