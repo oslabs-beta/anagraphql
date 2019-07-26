@@ -15,13 +15,8 @@
     "express-graphql": "^0.9.0",
     "faker": "^4.1.0",
     "graphql": "^14.4.2",
-<<<<<<< HEAD
-    "nodemon": "^1.19.1",
-    "pg": "^7.11.0"
-=======
     "pg": "^7.11.0",
     "pg-promise": "^8.7.5"
->>>>>>> dev
   },
   "devDependencies": {},
   "description": ""
