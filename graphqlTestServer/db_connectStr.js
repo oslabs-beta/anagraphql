@@ -1,3 +1,6 @@
+
+const user = require('os').userInfo().username;
+
 const host = 'localhost';
 const database = 'anagraph_db';
 const password = 'node_password';
