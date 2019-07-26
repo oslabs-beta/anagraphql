@@ -1,0 +1,25 @@
+{
+  "name": "anagraphql",
+  "version": "1.0.0",
+  "description": "Express middleware used to analyze graphQL queries before interacting with the database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/anagraphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "analyze",
+    "policies",
+    "monitoring"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/anagraphql/issues"
+  },
+  "homepage": "https://github.com/oslabs-beta/anagraphql#readme"
+}
