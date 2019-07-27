@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "anagraphql": "file:..",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
@@ -18,6 +19,11 @@
     "pg": "^7.11.0",
     "pg-promise": "^8.7.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3"
+  },
   "description": ""
 }
