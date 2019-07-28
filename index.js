@@ -14,7 +14,6 @@ const anagraphql = options =>{
         }
         const {schema, graphiql} = options;
         if(!schema) throw new Error('GraphQL middleware options must contain a schema.');
-        // const {query} = req.body;
 
         if(graphiql && req.method ==='GET'){
             res.send(renderGraphiql())
