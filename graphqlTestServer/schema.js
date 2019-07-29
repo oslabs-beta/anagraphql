@@ -1,10 +1,3 @@
-const graphql = require('graphql');
-const pgp = require('pg-promise')();
-const connectionString = require('./async_db');
-
-const db = {};
-db.conn = pgp(connectionString);
-
 const {
   GraphQLObjectType,
   GraphQLID,
@@ -12,7 +5,13 @@ const {
   GraphQLBoolean,
   GraphQLList,
   GraphQLSchema,
-} = graphql;
+} = require('graphql');
+const pgp = require('pg-promise')();
+const connectionString = require('./async_db');
+
+const db = {};
+db.conn = pgp(connectionString);
+
 
 
 const PersonType = new GraphQLObjectType({
