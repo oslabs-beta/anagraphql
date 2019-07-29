@@ -10,4 +10,4 @@ const port = 5432;
 const connString = `postgresql://${user}:${password}@${host}:${port}/${database}`;
 
 
-module.exports = connString;
+module.exports = connString;  
