@@ -1,5 +1,3 @@
-
-const parser = require('./Parser/queryParser');
 const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
 /**
