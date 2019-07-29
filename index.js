@@ -1,7 +1,5 @@
-
-const parser = require('./Parser/queryParser');
 const renderGraphiql = require('./renderGraphiql');
-
+const anagraphCreator = require('./Parser/anagraphCreator');
 /**
  * Function that returns express middleware.
  * It accepts an options object that configures it's behavior.
@@ -13,14 +11,23 @@ const anagraphql = options => ((req, res, next) => {
     res.end();
   }
   const { schema, graphiql } = options;
-
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
+  // const {query} = req.body;
+
+  if (req.body.query) {
+    res.locals.anagraph = anagraphCreator(req.body.query);
+  }
 
   if (graphiql && req.method === 'GET') {
-    res.status(200).send(renderGraphiql());
+    res.send(renderGraphiql());
     res.end();
   }
-  else if (req.method === 'POST') next();
+
+
+  if (!graphiql) {
+    return next();
+  }
+  if (req.method === 'POST') next();
 });
 
 module.exports = anagraphql;
