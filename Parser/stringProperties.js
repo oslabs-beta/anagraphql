@@ -1,6 +1,5 @@
 module.exports = {
   lengthOfString: string => string.length,
-
   maxNested: 0,
   currentNested: 0,
 

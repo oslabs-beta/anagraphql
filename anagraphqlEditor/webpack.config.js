@@ -4,8 +4,8 @@ module.exports = {
     mode: process.env.NODE_ENV,
     entry: path.join(__dirname, 'src', 'client', 'index.js' ),
     output: {
-        publicPath: path.join(__dirname, 'dist'),
-        path: path.join(__dirname, 'dist'),
+        publicPath: path.join(__dirname, '..'),
+        path: path.join(__dirname, '..'),
         filename: 'bundle.js'
     },
     module: {
