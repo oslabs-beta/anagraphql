@@ -27,6 +27,7 @@ const anagraphql = options => ((req, res, next) => {
   if (!graphiql) {
     return next();
   }
+  if (req.method === 'POST') next();
 });
 
 module.exports = anagraphql;
