@@ -9,12 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.use('/graphql',
-  (req, res, next) => {
-    console.log(req.body);
-    // console.log(req.body.query)
-    return next();
-  },
-
+  (req, res, next) => next(),
   anagraphql({ schema }),
   graphqlHTTP({
     schema,
