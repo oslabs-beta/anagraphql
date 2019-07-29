@@ -20,13 +20,17 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        exclude: /node_modules/,
         loaders: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.mjs', '.gql', '.graphql'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
