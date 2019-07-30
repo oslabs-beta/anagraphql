@@ -1,7 +1,8 @@
-import React from 'react';
-import CodeMirrorComponent from 'react-codemirror';
+import React, { useState } from 'react';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateQuery, getQueryResponse } from '../actions/actions';
+import { updateQuery, getQueryResponse, createAnagraph } from '../actions/actions';
+import anagraphCreator from '../utility/anagraphCreator';
 
 import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -27,13 +28,14 @@ import 'codemirror/theme/night.css';
 
 
 const CodeEditor = () => {
+  const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
+
   const { query, schema } = useSelector(state => ({
     query: state.query.query,
     schema: state.query.schema,
   }));
-  
+  const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
-
   const options = {
     lineNumbers: true,
     tabSize: 2,
@@ -51,19 +53,32 @@ const CodeEditor = () => {
     },
     hintOptions: {
       schema,
+      closeOnUnfocus: false,
+      completeSingle: false,
     },
     theme: 'default',
   };
 
+  const handleQuery = () => {
+    dispatch(getQueryResponse(query));
+    const anagraph = anagraphCreator(query);
+    dispatch(createAnagraph(anagraph));
+  };
+
   return (
-    <div id="codeEditor" style={{padding: '10px', background: '#f0f0f0'}}>
-      <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button>
-      <CodeMirrorComponent
+    <div>
+      <CodeMirror
         value={query}
-        onChange={currQ => dispatch(updateQuery(currQ))}
+        onKeyUp={(editor, event) => {
+          if (AUTO_COMPLETE_AFTER_KEY.test(event.key)) {
+            editor.execCommand('autocomplete');
+          }
+        }}
+        onBeforeChange={(editor, data, value) => dispatch(updateQuery(value))}
+        onUpdate={editor => setErrors(editor.state.lint.marked.length !== 0)}
         options={options}
       />
-      {/* <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button> */}
+      <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button>
     </div>
   );
 };
