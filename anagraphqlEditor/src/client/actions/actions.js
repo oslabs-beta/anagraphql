@@ -27,7 +27,19 @@ export const getSchema = body => (dispatch) => {
     });
 };
 
-// export const getQueryResponse = query => (dispatch) => {
-//   fetch('/graphql', { method: 'POST', mode: 'same-origin', credentials: 'same-origin',
-//  body: });
-// };
+export const getQueryResponse = query => (dispatch) => {
+  fetch('/graphql', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query }),
+    credentials: 'include',
+  })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data);
+      dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
+    });
+};
