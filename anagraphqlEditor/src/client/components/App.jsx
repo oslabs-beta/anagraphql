@@ -2,6 +2,8 @@ import React from 'react';
 import CodeEditor from './CodeEditor';
 import ResponseViewer from './ResponseViewer';
 // import MainContainer from "./containers/MainContainer.jsx";
+
+//Code editor file renders from here
 const App = () => (
   <div id="App">
     <h1>Test</h1>
