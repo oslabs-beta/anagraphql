@@ -1,6 +1,8 @@
 import { buildClientSchema } from 'graphql';
 import * as types from '../constants/actionTypes';
 
+
+
 export const updateQuery = query => ({
   type: types.UPDATE_QUERY,
   payload: query,
