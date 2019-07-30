@@ -11,6 +11,16 @@ export const addSavedQuery = index => ({
   payload: index,
 });
 
+export const createAnagraph = anagraph => ({
+  type: types.CREATE_ANAGRAPH,
+  payload: anagraph,
+});
+
+export const updateCurrAnagraph = anagraph => ({
+  type: types.UPDATE_CURR_ANAGRAPH,
+  payload: anagraph,
+});
+
 export const getSchema = body => (dispatch) => {
   fetch('/graphql', {
     method: 'POST',
@@ -44,7 +54,6 @@ export const getQueryResponse = query => (dispatch) => {
   })
     .then(response => response.json())
     .then((data) => {
-      console.log(data);
       dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
     });
 };
