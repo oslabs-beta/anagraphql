@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeMirrorComponent from 'react-codemirror';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateQuery, getQueryResponse } from '../actions/actions';
 
@@ -54,9 +54,9 @@ const CodeEditor = () => {
 
   return (
     <div>
-      <CodeMirrorComponent
+      <CodeMirror
         value={query}
-        onChange={currQ => dispatch(updateQuery(currQ))}
+        onBeforeChange={(editor, data, value) => dispatch(updateQuery(value))}
         options={options}
       />
       <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button>
