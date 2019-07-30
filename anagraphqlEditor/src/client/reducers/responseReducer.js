@@ -5,12 +5,16 @@ import {
   UPDATE_CURR_ANAGRAPH,
 } from '../constants/actionTypes';
 
+
+// Sets variables for initial response store
 const initialState = {
   currResponse: null,
   currAnagraph: null,
   responseList: [],
   anagraphList: [],
 };
+
+//The responseReducer function returns either a default response (state) or, if the GET_QUERY_RESPONSE action type is passed as an argument, returns the current response and response list.
 
 const responseReducer = (state = initialState, action) => {
   switch (action.type) {
