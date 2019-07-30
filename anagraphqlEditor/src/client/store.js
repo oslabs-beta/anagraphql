@@ -7,6 +7,8 @@ import {
 import reducers from './reducers/rootReducer';
 import { getSchema } from './actions/actions';
 
+//Creates Redux store
+
 const store = createStore(reducers, applyMiddleware(thunk));
 store.dispatch(getSchema({ query: introspectionQuery, operationName: introspectionQueryName }));
 

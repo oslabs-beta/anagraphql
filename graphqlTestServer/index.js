@@ -13,7 +13,7 @@ app.use('/graphql',
   anagraphql({ schema, graphiql: true }),
   graphqlHTTP({
     schema,
-    graphiql: true,
+   // graphiql: true,
   }));
 
 

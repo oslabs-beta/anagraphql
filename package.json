@@ -17,7 +17,7 @@
     "monitoring"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/oslabs-beta/anagraphql/issues"
   },
