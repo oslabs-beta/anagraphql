@@ -27,6 +27,11 @@ export const getSchema = body => (dispatch) => {
     });
 };
 
+export const updateCurrResponse = resp => ({
+  type: types.UPDATE_CURR_RESPONSE,
+  payload: resp,
+});
+
 export const getQueryResponse = query => (dispatch) => {
   fetch('/graphql', {
     method: 'POST',
