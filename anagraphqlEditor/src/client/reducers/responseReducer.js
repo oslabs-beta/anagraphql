@@ -1,4 +1,4 @@
-import { GET_QUERY_RESPONSE } from '../constants/actionTypes';
+import { GET_QUERY_RESPONSE, UPDATE_CURR_RESPONSE } from '../constants/actionTypes';
 
 const initialState = {
   currResponse: null,
@@ -10,7 +10,12 @@ const responseReducer = (state = initialState, action) => {
     case GET_QUERY_RESPONSE:
       return {
         currResponse: action.payload,
-        responseList: [action.payload, ...state.responseList],
+        responseList: [...state.responseList, action.payload],
+      };
+    case UPDATE_CURR_RESPONSE:
+      return {
+        ...state,
+        currResponse: action.payload,
       };
     default:
       return state;
