@@ -1,7 +1,5 @@
 import React from 'react';
-import CodeMirrorComponent from 'react-codemirror';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateQuery, getQueryResponse } from '../actions/actions';
+import { useSelector } from 'react-redux';
 import 'codemirror/addon/fold/foldgutter';
 import 'codemirror/addon/dialog/dialog';
 import 'codemirror/addon/search/search';
