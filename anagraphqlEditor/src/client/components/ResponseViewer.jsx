@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const ResponseViewer = () => {
   const response = useSelector(state => state.response.currResponse);
   return (
-    <p>{JSON.stringify(response, null, 4)}</p>
+    <div>{JSON.stringify(response, null, 4)}</div>
   );
 };
 
