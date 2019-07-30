@@ -30,7 +30,6 @@ const ResponseViewer = () => {
     readOnly: true,
     gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
   };
-  console.log(JSON.stringify(response, null, 4));
   return (
     <CodeMirror
       value={JSON.stringify(response, null, 4)}
