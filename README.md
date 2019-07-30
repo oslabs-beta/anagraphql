@@ -2,7 +2,7 @@
 
 # What is anagraphql?
 
-Anagraphql creates express middleware that can be used to analyze graphQL queries before they interact with a database.
+Anagraphql an express middleware package that can be used to analyze graphQL queries before they interact with a database.
 
 # Installation
 
