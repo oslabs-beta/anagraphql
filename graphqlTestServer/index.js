@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use('/graphql',
   (req, res, next) => next(),
-  anagraphql({ schema }),
+  anagraphql({ schema, graphiql: true }),
   graphqlHTTP({
     schema,
     graphiql: true,
