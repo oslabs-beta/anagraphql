@@ -2,12 +2,15 @@ import {
   UPDATE_QUERY, ADD_SAVED_QUERY, DELETE_SAVED_QUERY, GET_SCHEMA,
 } from '../constants/actionTypes';
 
+
+//Sets variables for inital query store
 const initialState = {
   query: '',
   queriesSaved: [],
   schema: null,
 };
 
+//The queryReducer function contains a seriers of conditionals that perform a specific action based on what action from our imported actions are passed in as an argument
 const queryReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_QUERY:
