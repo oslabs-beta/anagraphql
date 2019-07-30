@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import CodeEditor from './CodeEditor';
-import ResponseViewer from './ResponseViewer';
+import CodeContainer from './CodeContainer';
+
 import {
   BrowserRouter as Router,
   Route,
   Link,
 } from 'react-router-dom';
-// import MainContainer from "./containers/MainContainer.jsx";
+
 const routes = [
   {
     path: '/',
     exact: true,
     sidebar: () => <div>Code Editor!</div>,
-    main: () => <CodeEditor/>
+    main: () => <CodeContainer/>
   },
   {
     path: '/about',
@@ -65,8 +65,6 @@ const App = () => (
         </div>
       </div>
     </Router>
-    {/* <CodeEditor /> */}
-    {/* <ResponseViewer /> */}
   </div>
 );
 
