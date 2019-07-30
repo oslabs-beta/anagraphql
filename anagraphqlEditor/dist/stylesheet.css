@@ -1,6 +1,4 @@
 #App {
-    background-color: #ff8dd9;
-    height: 500px;
 }
 
 #codeEditor {
@@ -8,8 +6,5 @@
 }
 
 #title {
-    color: #d9ff8d;
     text-align: center;
-    justify-content: middle;
-    height: 100px;
 }
