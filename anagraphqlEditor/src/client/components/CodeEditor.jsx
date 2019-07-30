@@ -28,6 +28,7 @@ const CodeEditor = () => {
     query: state.query.query,
     schema: state.query.schema,
   }));
+  
   const dispatch = useDispatch();
 
   const options = {
