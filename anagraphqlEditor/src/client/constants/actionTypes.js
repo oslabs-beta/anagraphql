@@ -1,3 +1,6 @@
+//Describes actions needed for redux reducers
+//Basically CRUD actions for interacting with query state on the frontend
+
 export const UPDATE_QUERY = 'UPDATE_QUERY';
 export const ADD_SAVED_QUERY = 'ADD_SAVED_QUERY';
 export const DELETE_SAVED_QUERY = 'DELETE_SAVED_QUERY';
