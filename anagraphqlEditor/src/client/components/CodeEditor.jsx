@@ -21,6 +21,7 @@ import 'codemirror-graphql/lint';
 import 'codemirror-graphql/info';
 import 'codemirror-graphql/jump';
 import 'codemirror-graphql/mode';
+import 'codemirror/theme/night.css';
 
 
 const CodeEditor = () => {
@@ -47,10 +48,11 @@ const CodeEditor = () => {
     hintOptions: {
       schema,
     },
+    theme: 'night',
   };
 
   return (
-    <div>
+    <div id="codeEditor">
       <CodeMirrorComponent
         value={query}
         onChange={currQ => dispatch(updateQuery(currQ))}

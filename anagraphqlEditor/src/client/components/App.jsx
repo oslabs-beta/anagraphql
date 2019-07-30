@@ -3,7 +3,9 @@ import CodeEditor from './CodeEditor';
 // import MainContainer from "./containers/MainContainer.jsx";
 const App = () => (
   <div id="App">
-    <h1>Test</h1>
+    <div id="title">
+      <h1>AnagraphQL</h1>
+    </div>
     <CodeEditor />
   </div>
 );
