@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
+//This renders the frontend of the anangraphql application
 
 module.exports = () => {
   const content = fs.readFileSync(path.join(__dirname, 'bundle.js'), 'utf-8');
