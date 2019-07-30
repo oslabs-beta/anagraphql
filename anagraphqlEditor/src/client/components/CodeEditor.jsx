@@ -51,17 +51,18 @@ const CodeEditor = () => {
     hintOptions: {
       schema,
     },
-    theme: 'night',
+    theme: 'default',
   };
 
   return (
-    <div id="codeEditor">
+    <div id="codeEditor" style={{padding: '10px', background: '#f0f0f0'}}>
+      <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button>
       <CodeMirrorComponent
         value={query}
         onChange={currQ => dispatch(updateQuery(currQ))}
         options={options}
       />
-      <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button>
+      {/* <button type="button" onClick={() => dispatch(getQueryResponse(query))}>Send Query</button> */}
     </div>
   );
 };
