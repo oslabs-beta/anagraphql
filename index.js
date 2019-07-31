@@ -1,5 +1,6 @@
 const renderGraphiql = require('./renderGraphiql');
-const anagraphCreator = require('./Parser/anagraphCreator');
+// const anagraphCreator = require('./Parser/anagraphCreator'); <-- ROOT OF LIBRARY
+const anagraphCreator = require('./anagraphqlEditor/Parser/anagraphCreator') // REQUIRE FROM DEV ENV
 
 const anagraphql = options => ((req, res, next) => {
   if (req.method !== 'GET' && req.method !== 'POST') {
