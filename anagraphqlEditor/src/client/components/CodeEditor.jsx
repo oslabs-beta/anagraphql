@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
+import { parse, print } from 'graphql';
 import {
   updateQuery, getQueryResponse, createAnagraph, updateQueryHistory,
 } from '../actions/actions';
@@ -36,6 +37,7 @@ const CodeEditor = () => {
   }));
   const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
+  const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
   const options = {
     lineNumbers: true,
     tabSize: 2,
@@ -56,14 +58,22 @@ const CodeEditor = () => {
       closeOnUnfocus: false,
       completeSingle: false,
     },
+    extraKeys: {
+      'Alt-P': () => {
+        if (!hasErrors)prettifyQuery();
+      },
+    },
     theme: 'default',
   };
 
   const handleQuery = () => {
-    dispatch(getQueryResponse(query));
-    const anagraph = anagraphCreator(query);
-    dispatch(createAnagraph(anagraph));
-    dispatch(updateQueryHistory(query));
+    if (!hasErrors) {
+      dispatch(getQueryResponse(query));
+      const anagraph = anagraphCreator(query);
+      dispatch(createAnagraph(anagraph));
+      prettifyQuery();
+      dispatch(updateQueryHistory(query));
+    }
   };
 
   return (
