@@ -65,7 +65,6 @@ const CodeEditor = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button>
       <CodeMirror
         value={query}
         onKeyUp={(editor, event) => {
@@ -77,7 +76,7 @@ const CodeEditor = () => {
         onUpdate={editor => setErrors(editor.state.lint.marked.length !== 0)}
         options={options}
       />
-      {/* <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button> */}
+      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{cursor: 'grab'}}>Send Query</button>
     </div>
   );
 };
