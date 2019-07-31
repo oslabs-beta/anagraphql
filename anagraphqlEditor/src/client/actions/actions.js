@@ -1,16 +1,14 @@
 import { buildClientSchema } from 'graphql';
 import * as types from '../constants/actionTypes';
 
-
+export const updateQueryHistory = query => ({
+  type: types.UPDATE_QUERY_HISTORY,
+  payload: query,
+});
 
 export const updateQuery = query => ({
   type: types.UPDATE_QUERY,
   payload: query,
-});
-
-export const addSavedQuery = index => ({
-  type: types.ADD_SAVED_QUERY,
-  payload: index,
 });
 
 export const createAnagraph = anagraph => ({
