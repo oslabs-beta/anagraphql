@@ -11,6 +11,7 @@ import 'codemirror/addon/fold/brace-fold';
 import 'codemirror/addon/lint/lint';
 import 'codemirror/addon/lint/json-lint';
 import 'codemirror/mode/javascript/javascript';
+import 'codemirror/lib/codemirror.css';
 
 
 const JsonDisplay = ({ json }) => {

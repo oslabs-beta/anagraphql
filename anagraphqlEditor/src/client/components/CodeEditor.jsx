@@ -25,7 +25,6 @@ import 'codemirror-graphql/info';
 import 'codemirror-graphql/jump';
 import 'codemirror-graphql/mode';
 
-
 const CodeEditor = () => {
   const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
 
@@ -55,6 +54,7 @@ const CodeEditor = () => {
       closeOnUnfocus: false,
       completeSingle: false,
     },
+    theme: 'default',
   };
 
   const handleQuery = () => {
@@ -65,6 +65,7 @@ const CodeEditor = () => {
 
   return (
     <div>
+      <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button>
       <CodeMirror
         value={query}
         onKeyUp={(editor, event) => {
@@ -76,7 +77,7 @@ const CodeEditor = () => {
         onUpdate={editor => setErrors(editor.state.lint.marked.length !== 0)}
         options={options}
       />
-      <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button>
+      {/* <button type="button" onClick={handleQuery} disabled={hasErrors}>Send Query</button> */}
     </div>
   );
 };
