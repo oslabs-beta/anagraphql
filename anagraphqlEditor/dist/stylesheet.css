@@ -1,4 +1,5 @@
 #App {
+
 }
 
 #container {
@@ -8,4 +9,33 @@
 
 #title {
     text-align: center;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    height: 100%;
+    overflow: auto;
+}
+
+#nav a {
+    display: block;
+    margin: 10px;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    border: 1px solid;
+    text-shadow: 2px;
+}
+   
+#nav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#nav a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }
