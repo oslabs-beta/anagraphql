@@ -24,6 +24,7 @@
     "graphql-language-service-parser": "^1.2.2",
     "pg-promise": "^9.0.0",
     "react": "^16.8.6",
+    "react-animated-css": "^1.2.1",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
