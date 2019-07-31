@@ -1,6 +1,8 @@
 const express = require('express');
+const path = require('path');
 const graphqlHTTP = require('express-graphql');
-const anagraphql = require('anagraphql');
+
+const anagraphql = require(path.join(__dirname, '..', '..', '..'));
 const schema = require('./schema');
 
 const app = express();
@@ -9,6 +11,10 @@ app.use(express.json());
 
 app.use('/graphql',
   anagraphql({ schema, graphiql: true }),
+  (req, res, next) => {
+    console.log(res.locals.anagraph);
+    next();
+  },
   graphqlHTTP({
     schema,
   }));
