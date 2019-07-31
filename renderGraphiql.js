@@ -1,9 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 
-
-module.exports = (schema) => {
+module.exports = () => {
   const content = fs.readFileSync(path.join(__dirname, 'bundle.js'), 'utf-8');
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,6 @@ module.exports = (schema) => {
 </head>
 <body>
     <div id="root"></div>
-    <script>const schema = ${JSON.stringify(schema)};</script>
 
     <script>${content}</script>
 </body>
