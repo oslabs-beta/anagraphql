@@ -1,15 +1,17 @@
 const express = require('express');
-const path = require('path');
+const graphqlHTTP = require('express-graphql');
+const anagraphql = require('anagraphql');
+const schema = require('./schema');
 
 const app = express();
+const port = 3000;
+app.use(express.json());
+
+app.use('/graphql',
+  anagraphql({ schema, graphiql: true }),
+  graphqlHTTP({
+    schema,
+  }));
 
 
-//Uses static file
-app.use('/dist',express.static(path.join(__dirname, '..', '..', 'dist')));
-
-//Serves dist file and index.html?
-app.get('/', (req, res)=>{
-    res.sendFile(path.join(__dirname, '..', '..', 'dist', 'index.html'))
-});
-
-app.listen(3000, ()=>console.log(`listening on 3000`))
+app.listen(port, () => (console.log(`something on port ${port}`)));
