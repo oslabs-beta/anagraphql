@@ -9,19 +9,19 @@ import {
 
 const routes = [
   {
-    path: '/',
+    path: '/graphql',
     exact: true,
     sidebar: () => <div>Code Editor!</div>,
     main: () => <CodeContainer/>
   },
   {
-    path: '/about',
+    path: '/graphql/about',
     exact: true,
     sidebar: () => <div>About!</div>,
     main: () => <h2>This will be our ReadMe file</h2>
   },
   {
-    path: '/policies',
+    path: '/graphql/policies',
     exact: true,
     sidebar: () => <div>Policies!</div>,
     main: () => <h2>This will be our policies component</h2>
@@ -40,9 +40,9 @@ const App = () => (
           backgroundColor: '#ff8dd9',
         }}>
           <ul style={{listStyleType: 'none', padding: 0, height: '500px', width: '200px'}}>
-            <li><Link to='/'>Code Editor</Link></li>
-            <li><Link to='/about'>About</Link></li>
-            <li><Link to='/policies'>Policies</Link></li>
+            <li><Link to='/graphql'>Code Editor</Link></li>
+            <li><Link to='/graphql/about'>About</Link></li>
+            <li><Link to='/graphql/policies'>Policies</Link></li>
           </ul>
           {routes.map((route) => {
             return <Route
