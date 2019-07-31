@@ -12,7 +12,6 @@ app.use(express.json());
 app.use('/graphql',
   anagraphql({ schema, graphiql: true }),
   (req, res, next) => {
-    console.log(res.locals.anagraph);
     next();
   },
   graphqlHTTP({
