@@ -1,0 +1,11 @@
+#App {
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+#title {
+    text-align: center;
+}
