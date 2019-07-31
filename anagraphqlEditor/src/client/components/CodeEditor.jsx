@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateQuery, getQueryResponse, createAnagraph } from '../actions/actions';
+import {
+  updateQuery, getQueryResponse, createAnagraph, updateQueryHistory,
+} from '../actions/actions';
 import anagraphCreator from '../utility/anagraphCreator';
 
 import 'codemirror/lib/codemirror';
@@ -61,6 +63,7 @@ const CodeEditor = () => {
     dispatch(getQueryResponse(query));
     const anagraph = anagraphCreator(query);
     dispatch(createAnagraph(anagraph));
+    dispatch(updateQueryHistory(query));
   };
 
   return (
@@ -76,7 +79,7 @@ const CodeEditor = () => {
         onUpdate={editor => setErrors(editor.state.lint.marked.length !== 0)}
         options={options}
       />
-      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{cursor: 'grab'}}>Send Query</button>
+      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
     </div>
   );
 };
