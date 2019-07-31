@@ -1,6 +1,6 @@
 {
   "name": "anagraphql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express middleware used to analyze graphQL queries before interacting with the database.",
   "main": "index.js",
   "scripts": {
