@@ -1,6 +1,13 @@
 #container {
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    display: flex;
+    flex-direction: column;
+}
+#top{
+    display:flex;
+}
+
+.item{
+    flex-grow:1;
 }
 
 #title {
