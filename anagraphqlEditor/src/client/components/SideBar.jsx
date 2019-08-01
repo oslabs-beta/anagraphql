@@ -45,7 +45,7 @@ const SideBar = () => {
               backgroundColor: '#eb93ac',
             }}
         >
-          <img src="./IMG_0672.jpg" alt="Anagraph Logo" height="300px" />
+          <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
           <ul style={{
               listStyleType: 'none', padding: 0, height: '500px', width: '200px',
             }}

@@ -29,7 +29,6 @@ module.exports = {
     return analytics;
   },
 
-
   countDepth: (query) => {
     let num = -1;
     let max = -1;
@@ -40,5 +39,13 @@ module.exports = {
     }
     return max;
   },
+  combinedResolvers: (obj) => {
+    const arr = Object.values(obj.analytics.resolvers);
+    return arr.reduce((acc, ite) => acc += ite);
+  },
 
+  combinedFields: (obj) => {
+    const arr = Object.values(obj.analytics.fields);
+    return arr.reduce((acc, ite) => acc += ite);
+  },
 };
