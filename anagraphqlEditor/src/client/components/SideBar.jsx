@@ -4,6 +4,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
 
 const SideBar = () => {
@@ -20,7 +22,12 @@ const SideBar = () => {
     {
       path: '/graphql/about',
       exact: true,
-      main: () => <h2>This will be our ReadMe file</h2>,
+      main: () => <ReactMarkdown
+      source={readMe}
+      renderers={{
+        code: CodeBlock,
+      }}
+    />
     },
     {
       path: '/graphql/policies',
