@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "NODE_ENV=development webpack-dev-server --open",
     "build": "NODE_ENV=production webpack"
   },
@@ -38,6 +38,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.37.0",
