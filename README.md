@@ -36,4 +36,3 @@ app.use('/graphql',
 # Anangraphql Interactive Playground
 
 More soon...
-
