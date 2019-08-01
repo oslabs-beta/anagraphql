@@ -68,11 +68,11 @@ const CodeEditor = () => {
 
   const handleQuery = () => {
     if (!hasErrors) {
+      prettifyQuery();
       dispatch(getQueryResponse(query));
       const anagraph = anagraphCreator(query);
       dispatch(createAnagraph(anagraph));
-      prettifyQuery();
-      dispatch(updateQueryHistory(query));
+      dispatch(updateQueryHistory(print(parse(query))));
     }
   };
 
