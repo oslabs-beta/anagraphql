@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
-const anagraphql = require('anagraphql');
+const anagraphql = require('../');
 const schema = require('./schema');
 
 const app = express();
@@ -13,7 +13,7 @@ app.use('/graphql',
   anagraphql({ schema, graphiql: true }),
   graphqlHTTP({
     schema,
-   // graphiql: true,
+    // graphiql: true,
   }));
 
 
