@@ -3,6 +3,7 @@ import {
   UPDATE_CURR_RESPONSE,
   CREATE_ANAGRAPH,
   UPDATE_CURR_ANAGRAPH,
+  UPDATE_QUERY_HISTORY,
 } from '../constants/actionTypes';
 
 
@@ -10,11 +11,12 @@ import {
 const initialState = {
   currResponse: null,
   currAnagraph: null,
-  responseList: [],
-  anagraphList: [],
+  // responseList: [],
+  // anagraphList: [],
+  history: { response: [], anagraph: [], query: [] },
 };
 
-//The responseReducer function returns either a default response (state) or, if the GET_QUERY_RESPONSE action type is passed as an argument, returns the current response and response list.
+// The responseReducer function returns either a default response (state) or, if the GET_QUERY_RESPONSE action type is passed as an argument, returns the current response and response list.
 
 const responseReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -22,7 +24,12 @@ const responseReducer = (state = initialState, action) => {
       return {
         ...state,
         currResponse: action.payload,
-        responseList: [...state.responseList, action.payload],
+        // responseList: [...state.responseList, action.payload],
+        history: {
+          anagraph: [...state.history.anagraph],
+          response: [...state.history.response, action.payload],
+          query: [...state.history.query],
+        },
       };
     case UPDATE_CURR_RESPONSE:
       return {
@@ -32,13 +39,28 @@ const responseReducer = (state = initialState, action) => {
     case CREATE_ANAGRAPH:
       return {
         ...state,
-        anagraphList: [...state.anagraphList, action.payload],
+        // anagraphList: [...state.anagraphList, action.payload],
+        history: {
+          anagraph: [...state.history.anagraph, action.payload],
+          response: [...state.history.response],
+          query: [...state.history.query],
+        },
         currAnagraph: action.payload,
       };
     case UPDATE_CURR_ANAGRAPH:
       return {
         ...state,
         currAnagraph: action.payload,
+      };
+    case UPDATE_QUERY_HISTORY:
+      return {
+        ...state,
+        // anagraphList: [...state.anagraphList, action.payload],
+        history: {
+          anagraph: [...state.history.anagraph],
+          response: [...state.history.response],
+          query: [...state.history.query, action.payload],
+        },
       };
     default:
       return state;
