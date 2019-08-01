@@ -4,6 +4,8 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
 
 const SideBar = () => {
@@ -20,7 +22,12 @@ const SideBar = () => {
     {
       path: '/graphql/about',
       exact: true,
-      main: () => <h2>This will be our ReadMe file</h2>,
+      main: () => <ReactMarkdown
+      source={readMe}
+      renderers={{
+        code: CodeBlock,
+      }}
+    />
     },
     {
       path: '/graphql/policies',
@@ -35,7 +42,7 @@ const SideBar = () => {
           id="nav"
           style={{
               padding: '10px',
-              backgroundColor: '#ff8dd9',
+              backgroundColor: '#eb93ac',
             }}
         >
           <img src="./IMG_0672.jpg" alt="Anagraph Logo" height="300px" />
@@ -58,6 +65,7 @@ const SideBar = () => {
           />
             ))}
         </div>
+      
       </div>
     </Animated>
   );

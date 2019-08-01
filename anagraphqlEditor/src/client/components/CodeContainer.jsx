@@ -10,9 +10,14 @@ const CodeContainer = () => {
 
   return (
     <div id="container">
-      <CodeEditor />
-      <JsonDisplay json={response} />
-      <JsonDisplay json={anagraph} />
+      <div id="top">
+          <CodeEditor />
+          <JsonDisplay json={response} />
+        </div>
+      <div id="top">
+          <JsonDisplay json={anagraph} />
+          <JsonDisplay json={{ maxNested: 5 }} />
+    </div>
       <History />
     </div>
   );
