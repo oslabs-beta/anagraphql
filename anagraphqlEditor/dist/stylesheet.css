@@ -2,7 +2,7 @@
     display:flex;
 }
 
-#current {
+.current {
     border-width: 2px;
    border-bottom-width:2px;
    border-bottom-color:Black;
@@ -10,11 +10,13 @@
 }
 body {
     margin: 0;
-    text-align: center;
     height: 100%;
     background-color: #fff9f2;
  
    
+}
+#sendQuery{
+    text-align: center;
 }
 
 #container {
