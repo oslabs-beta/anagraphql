@@ -42,7 +42,7 @@ const SideBar = () => {
           id="nav"
           style={{
               padding: '10px',
-              backgroundColor: '#ff8dd9',
+              backgroundColor: '#eb93ac',
             }}
         >
           <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
@@ -65,6 +65,7 @@ const SideBar = () => {
           />
             ))}
         </div>
+      
       </div>
     </Animated>
   );
