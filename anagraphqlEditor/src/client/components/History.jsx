@@ -13,7 +13,12 @@ const History = () => {
     dispatch(updateCurrAnagraph(anagraphList[ind]));
     dispatch(updateQuery(queryList[ind]));
   };
-  const buttons = responseList.map((cv, i) => <button id={i} type="button" onClick={e => handleUpdate(e.currentTarget.id)} />);
+  // const buttons = responseList.map((cv, i) => <button id={i} type="button" onClick={e => handleUpdate(e.currentTarget.id)} />);
+  const buttons = responseList.map((cv, i) => (
+    <svg height="50" width="50">
+      <circle id={i} cx="25" cy="25" r="20" stroke="black" strokeWidth="2" fill="pink" onClick={e => handleUpdate(e.currentTarget.id)} />
+    </svg>
+  ));
 
   return (
     <div className="history">

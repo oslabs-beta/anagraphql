@@ -9,10 +9,15 @@ const CodeContainer = () => {
   const anagraph = useSelector(state => state.response.currAnagraph);
 
   return (
-    <div id="container" style={{height: '100%', padding: '10px', margin: '10px'}}>
-      <CodeEditor />
-      <JsonDisplay json={response} />
-      <JsonDisplay json={anagraph} />
+    <div id="container">
+      <div id="top">
+          <CodeEditor />
+          <JsonDisplay json={response} />
+        </div>
+      <div id="top">
+          <JsonDisplay json={anagraph} />
+          <JsonDisplay json={{ maxNested: 5 }} />
+    </div>
       <History />
     </div>
   );
