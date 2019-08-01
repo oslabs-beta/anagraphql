@@ -15,7 +15,6 @@ module.exports = () => {
 </head>
 <body>
     <div id="root"></div>
-
     <script>${content}</script>
 </body>
 </html>`;

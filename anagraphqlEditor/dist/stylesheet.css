@@ -12,15 +12,17 @@
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
-    height: 100%;
     overflow: auto;
+    min-height: 775px;
+    font-family: Arial;
+    font-weight: bold;
 }
 #nav img{
     max-width: 100%;
     max-height:8rem;
-     display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #nav a {
@@ -29,7 +31,7 @@
     color: black;
     padding: 16px;
     text-decoration: none;
-    border: 1px solid;
+    border: 2px solid;
     text-shadow: 2px;
 }
    
@@ -39,6 +41,6 @@
 }
 
 #nav a:hover:not(.active) {
-    background-color: #555;
+    background-color: black;
     color: white;
 }

@@ -9,7 +9,7 @@ const CodeContainer = () => {
   const anagraph = useSelector(state => state.response.currAnagraph);
 
   return (
-    <div id="container">
+    <div id="container" style={{height: '100%', padding: '10px', margin: '10px'}}>
       <CodeEditor />
       <JsonDisplay json={response} />
       <JsonDisplay json={anagraph} />
