@@ -2,10 +2,6 @@
 const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
 
-const introspectionQueryName = getOperationAST(parse(introspectionQuery)).name.value;
-
-const introspectionQueryString = JSON.stringify({ query: introspectionQuery, operationName: introspectionQueryName });
-
 const anagraphql = options => ((req, res, next) => {
   if (req.body.operationName !== undefined){
     return next();
