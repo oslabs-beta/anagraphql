@@ -1,7 +1,16 @@
+/* eslint-disable space-before-blocks */
 const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
 
+const introspectionQueryName = getOperationAST(parse(introspectionQuery)).name.value;
+
+const introspectionQueryString = JSON.stringify({ query: introspectionQuery, operationName: introspectionQueryName });
+
 const anagraphql = options => ((req, res, next) => {
+  if (req.body.operationName !== undefined){
+    return next();
+  }
+
   if (req.method !== 'GET' && req.method !== 'POST') {
     res.setHeader('Allow', 'GET, POST');
     res.status(405).send('GraphQL only supports GET and POST requests.');
@@ -10,9 +19,20 @@ const anagraphql = options => ((req, res, next) => {
   const { schema, graphiql } = options;
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
 
+  const rules = {
+    maxNested: 5,
+  };
+
+
   if (req.body.query) {
-    res.locals.anagraph = anagraphCreator(req.body.query);
+    const anagraph = anagraphCreator(req.body.query);
+    res.locals.anagraph = anagraph;
+    if (anagraph.analytics.maxNested > rules.maxNested) {
+      res.status(401).send({ String: 'Rule violation' });
+      return res.end();
+    }
   }
+
 
   if (graphiql && req.method === 'GET') {
     res.send(renderGraphiql());
