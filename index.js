@@ -10,9 +10,20 @@ const anagraphql = options => ((req, res, next) => {
   const { schema, graphiql } = options;
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
 
+  const rules = {
+    maxNested: 5,
+  };
+
+
   if (req.body.query) {
-    res.locals.anagraph = anagraphCreator(req.body.query);
+    const anagraph = anagraphCreator(req.body.query);
+    res.locals.anagraph = anagraph;
+    if (anagraph.analytics.maxNested > rules.maxNested) {
+      res.status(401).send({ String: 'Rule violation' });
+      return res.end();
+    }
   }
+
 
   if (graphiql && req.method === 'GET') {
     res.send(renderGraphiql());

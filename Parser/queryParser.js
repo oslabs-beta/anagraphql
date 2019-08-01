@@ -1,5 +1,6 @@
+
 const parser = (q) => {
-  const formatted = q
+  const formatted = q.replace(/ *\([^)]*\) */g, '')
     .slice(1, -1)
     .replace(/(\s*{)/g, '{')
     .split(/\s/g)
@@ -20,5 +21,6 @@ const parser = (q) => {
   };
   return helper();
 };
+
 
 module.exports = parser;
