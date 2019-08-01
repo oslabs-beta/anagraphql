@@ -1,14 +1,14 @@
 #container {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display:grid;
+    grid-template-rows: 50% 50%;
 }
 #top{
-    display:flex;
+    display:grid;
+    grid-template-columns: 50% 50%;
 }
 
-.item{
-    flex-grow:1;
-}
 
 #title {
     text-align: center;
