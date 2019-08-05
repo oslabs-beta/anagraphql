@@ -1,5 +1,3 @@
-# anagraphql
-
 # What is anagraphql?
 
 Anagraphql an express middleware package that can be used to analyze graphQL queries before they interact with a database.
@@ -14,7 +12,7 @@ npm i anagraphql
 
 # Getting started
 
-To use anagraphql in your application, require it into the file where you're setting up your server. 
+To use anagraphql in your application, require it into the file where you're setting up your server.
 
 ```
 const anagraphql = require('anagraphql');
@@ -25,9 +23,10 @@ From there, add anagraphql to your app.use function, as you would with any other
 
 ```
 app.use('/graphql',
-  (req, res, next) => next(),
-  anagraphql({ schema, 
-  graphiql: true
+  anagraphql({
+    schema,
+    rules,
+    anagraphqlPlayground: true
   }),
   graphqlHTTP({
     schema,
