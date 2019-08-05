@@ -2,6 +2,7 @@ const {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
+  GraphQLInt,
   GraphQLBoolean,
   GraphQLList,
   GraphQLSchema,
@@ -11,26 +12,6 @@ const connectionString = require('./async_db');
 
 const db = {};
 db.conn = pgp(connectionString);
-
-
-
-const PersonType = new GraphQLObjectType({
-  name: 'person',
-  fields: () => ({
-    person_id: { type: GraphQLID },
-    firstname: { type: GraphQLString },
-    lastname: { type: GraphQLString },
-    book: {
-      type: new GraphQLList(BookType),
-      resolve(parentValue, args) {
-        const query = `SELECT * FROM "book" WHERE author_id=${parentValue.person_id}`;
-        return db.conn.many(query)
-          .then(data => data);
-      },
-    },
-  }),
-});
-
 const BookType = new GraphQLObjectType({
   name: 'book',
   fields: () => ({
@@ -48,6 +29,32 @@ const BookType = new GraphQLObjectType({
   }),
 });
 
+const AuthorType = new GraphQLObjectType({
+  name: 'author',
+  fields: () => ({
+    author_id: { type: GraphQLID },
+    firstname: { type: GraphQLString },
+    lastname: { type: GraphQLString },
+    book: {
+      type: new GraphQLList(BookType),
+      resolve(parentValue, args) {
+        const query = `SELECT * FROM "book" WHERE author_id=${parentValue.author_id}`;
+        return db.conn.many(query)
+          .then(data => data);
+      },
+    },
+  }),
+});
+
+const PersonType = new GraphQLObjectType({
+  name: 'person',
+  fields: () => ({
+    person_id: { type: GraphQLID },
+    firstname: { type: GraphQLString },
+    lastname: { type: GraphQLString },
+  }),
+});
+
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -58,6 +65,17 @@ const RootQuery = new GraphQLObjectType({
       resolve(parentValue, args) {
         const query = `SELECT * FROM "person" WHERE person_id=${args.id}`;
         return db.conn.one(query)
+          .then(data => data);
+      },
+    },
+    author: {
+      type: new GraphQLList(AuthorType),
+      args: { limit: { type: GraphQLInt } },
+      resolve(parentValue, args) {
+        const query = `SELECT DISTINCT book.author_id, person.firstname, person.lastname
+        FROM book join person
+        ON book.author_id = person.person_id LIMIT ${args.limit};`;
+        return db.conn.many(query)
           .then(data => data);
       },
     },
