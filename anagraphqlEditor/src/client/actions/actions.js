@@ -57,3 +57,8 @@ export const getQueryResponse = query => (dispatch) => {
       dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
     });
 };
+
+export const addNewRule = rule => ({
+  type: types.ADD_NEW_RULE,
+  payload: rule,
+});
