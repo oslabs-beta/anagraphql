@@ -1,6 +1,6 @@
 const { introspectionFromSchema } = require('../graphqlTestServer/node_modules/graphql');
 
-const parseSchema = (schema) => {
+module.exports = (schema) => {
   const defaultTypes = {
     // RootQueryType: true,
     ID: true,
