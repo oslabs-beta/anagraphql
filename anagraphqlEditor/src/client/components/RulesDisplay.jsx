@@ -1,14 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addNewRule } from '../actions/actions';
+import { saveConfiguration } from '../actions/actions';
 
 const RulesDisplay = () => {
-    const rulesList = useSelector(state => state.rules.rules);
+    const rulesObject = useSelector(state => state.rules.currRule);
+    const rulesList = useSelector(state => state.rules.rules)
     const dispatch = useDispatch();
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        dispatch(addNewRule(e.target.firstChild.value));
+        console.log(rulesObject)
+        dispatch(saveConfiguration({name: e.target.firstChild.value, rules: rulesObject}));
+        e.target.firstChild.value = "";
     };
 
     const list = rulesList.map((rule) => (

@@ -58,7 +58,28 @@ export const getQueryResponse = query => (dispatch) => {
     });
 };
 
-export const addNewRule = rule => ({
-  type: types.ADD_NEW_RULE,
-  payload: rule,
+export const saveConfiguration = rules => ({
+  type: types.SAVE_CONFIGURATION,
+  payload: rules,
 });
+
+export const updateNestedQueries = num => ({
+  type: types.UPDATE_NESTED_QUERIES,
+  payload: num,
+});
+
+export const updateFields = num => ({
+  type: types.UPDATE_FIELDS,
+  payload: num,
+});
+
+export const updateResolvers = num => ({
+  type: types.UPDATE_RESOLVERS,
+  payload: num,
+});
+
+export const updateCurrRule = index => ({
+  type: types.UPDATE_CURR_RULE,
+  payload: index,
+})
+
