@@ -12,7 +12,7 @@ const anagraphCreator = (query) => {
   const anagraph = {};
   anagraph.analytics = stringProperties.countResolvers(theOBJ);
   anagraph.analytics.maxNested = stringProperties.countDepth(query);
-  anagraph.analytics.totalReducers = stringProperties.combinedResolvers(anagraph);
+  anagraph.analytics.totalResolvers = stringProperties.combinedResolvers(anagraph);
   anagraph.analytics.totalFields = stringProperties.combinedFields(anagraph);
   return anagraph;
 };

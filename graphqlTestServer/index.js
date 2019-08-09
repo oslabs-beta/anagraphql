@@ -8,9 +8,17 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
+const rules = {
+  shallowsResolvers: {
+    author: 3,
+  },
+  maxNested: 5,
+};
+
+
 app.use('/graphql',
   (req, res, next) => next(),
-  anagraphql({ schema, rules: { maxNested: 3 }, graphiql: true }),
+  anagraphql({ schema, rules, graphiql: true }),
   graphqlHTTP({
     schema,
     // graphiql: true,

@@ -22,9 +22,10 @@ const anagraphql = options => ((req, res, next) => {
   if (rules !== undefined) {
     applicableRules = schemaParser(schema);
     const validateRules = ruleValidator(applicableRules, rules);
+    console.log(validateRules);
     if (validateRules.error) {
       res.status(422).send('Rule violation');
-      res.end();
+      return res.end();
     }
   }
 
