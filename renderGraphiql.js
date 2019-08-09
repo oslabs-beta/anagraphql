@@ -16,7 +16,7 @@ module.exports = (rules) => {
     <title>AnagraphQL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script>const readMe = \`${readMe}\`
-            const queryRules = \`${JSON.stringify(rules)}\`
+            const queryRules = JSON.parse(\`${JSON.stringify(rules)}\`);
     </script>
 </head>
 <body>
