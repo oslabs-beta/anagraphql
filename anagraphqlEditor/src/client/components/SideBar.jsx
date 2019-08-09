@@ -14,9 +14,9 @@ const SideBar = () => {
       path: '/graphql',
       exact: true,
       main: () => (
-        <Animated animationIn="fadeInUp">
+        
           <CodeContainer />
-        </Animated>
+      
       ),
     },
     {
@@ -36,13 +36,13 @@ const SideBar = () => {
     },
   ];
   return (
-    <Animated animationIn="fadeInDown">
+    <Animated animationIn="slideInLeft">
       <div style={{ display: 'flex' }}>
         <div
           id="nav"
           style={{
               padding: '10px',
-              backgroundColor: '#eb93ac',
+              backgroundColor: '#0d1e33',
             }}
         >
           <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
