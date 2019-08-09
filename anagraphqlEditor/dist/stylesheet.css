@@ -1,10 +1,22 @@
+.history{
+    display:flex;
+}
+
+.current {
+    border-width: 2px;
+   border-bottom-width:2px;
+   border-bottom-color:Black;
+   border-bottom-style: solid;
+}
 body {
     margin: 0;
-    text-align: center;
     height: 100%;
     background-color: #f1fff3;
  
    
+}
+#sendQuery{
+    text-align: center;
 }
 
 

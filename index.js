@@ -12,12 +12,8 @@ const anagraphql = options => ((req, res, next) => {
     res.status(405).send('GraphQL only supports GET and POST requests.');
     res.end();
   }
-  const { schema, graphiql } = options;
+  const { schema, graphiql, rules } = options;
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
-
-  const rules = {
-    maxNested: 5,
-  };
 
 
   if (req.body.query) {
@@ -31,7 +27,8 @@ const anagraphql = options => ((req, res, next) => {
 
 
   if (graphiql && req.method === 'GET') {
-    res.send(renderGraphiql());
+    if (rules === undefined) res.send(renderGraphiql());
+    if (rules) res.send(renderGraphiql(rules));
     res.end();
   }
 

@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use('/graphql',
   (req, res, next) => next(),
-  anagraphql({ schema, graphiql: true }),
+  anagraphql({ schema, rules: { maxNested: 3 }, graphiql: true }),
   graphqlHTTP({
     schema,
     // graphiql: true,
