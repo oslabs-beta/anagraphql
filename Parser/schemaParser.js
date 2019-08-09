@@ -24,6 +24,9 @@ module.exports = (schema) => {
     fields: {},
     shallowResolvers: {},
     specificResolvers: {},
+    maxNested: true,
+    totalResolvers: true,
+    totalFields: true,
   };
 
   for (let i = 0; i < jsonifiedSchema.length; i += 1) {
