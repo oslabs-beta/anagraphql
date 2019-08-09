@@ -3,6 +3,7 @@ const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
 const schemaParser = require('./Parser/schemaParser');
 const ruleValidator = require('./Parser/ruleValidator');
+const queryValidator = require('./Parser/queryValidator');
 
 const anagraphql = options => ((req, res, next) => {
   if (req.body.operationName !== undefined) {
@@ -18,20 +19,23 @@ const anagraphql = options => ((req, res, next) => {
 
 
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
-  let applicableRules;
-  if (rules !== undefined) {
-    applicableRules = schemaParser(schema);
-    const validateRules = ruleValidator(applicableRules, rules);
-    console.log(validateRules);
-    if (validateRules.error) {
-      res.status(422).send('Rule violation');
-      return res.end();
-    }
-  }
-
 
   if (req.body.query) {
+    if (rules !== undefined) {
+      const applicableRules = schemaParser(schema);
+      const validateRules = ruleValidator(applicableRules, rules);
+      if (validateRules.error) {
+        res.status(422).send({ error: validateRules.error });
+        return res.end();
+      }
+    }
+
     const anagraph = anagraphCreator(req.body.query);
+    const evaluation = queryValidator(anagraph, rules);
+    if (evaluation.error) {
+      res.status(422).send({ error: evaluation.error });
+      return res.end();
+    }
     res.locals.anagraph = anagraph;
   }
 

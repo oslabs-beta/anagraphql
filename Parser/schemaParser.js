@@ -25,7 +25,7 @@ module.exports = (schema) => {
     shallowResolvers: {},
     specificResolvers: {},
     maxNested: true,
-    totalReducers: true,
+    totalResolvers: true,
     totalFields: true,
   };
 

@@ -9,10 +9,15 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const rules = {
-  shallowsResolvers: {
-    author: 3,
+  specificResolvers: {
+    rootQueryType_authors: 3,
   },
-  maxNested: 5,
+  shallowResolvers: {
+    authors: 2,
+  },
+  maxNested: 4,
+  totalResolvers: 25,
+  totalFields: 60,
 };
 
 
