@@ -7,6 +7,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
+import PoliciesContainer from './PoliciesContainer';
 
 const SideBar = () => {
   const routes = [
@@ -32,7 +33,7 @@ const SideBar = () => {
     {
       path: '/graphql/policies',
       exact: true,
-      main: () => <h2>This will be our policies component</h2>,
+      main: () => <PoliciesContainer/>
     },
   ];
   return (
