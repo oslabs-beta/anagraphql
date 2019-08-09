@@ -78,7 +78,7 @@ const CodeEditor = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
+   <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
 
       <CodeMirror
         value={query}
