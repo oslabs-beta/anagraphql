@@ -2,7 +2,8 @@
 const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
 const schemaParser = require('./Parser/schemaParser');
-// const ruleValidator = require('./Parser/ruleValidator');
+const ruleValidator = require('./Parser/ruleValidator');
+
 const anagraphql = options => ((req, res, next) => {
   if (req.body.operationName !== undefined) {
     return next();
@@ -20,7 +21,6 @@ const anagraphql = options => ((req, res, next) => {
   let applicableRules;
   if (rules !== undefined) {
     applicableRules = schemaParser(schema);
-    console.log(applicableRules);
     const validateRules = ruleValidator(applicableRules, rules);
     if (validateRules.error) {
       res.status(422).send('Rule violation');
