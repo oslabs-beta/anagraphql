@@ -7,6 +7,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
+import PoliciesContainer from './PoliciesContainer';
 
 const SideBar = () => {
   const routes = [
@@ -14,9 +15,9 @@ const SideBar = () => {
       path: '/graphql',
       exact: true,
       main: () => (
-        <Animated animationIn="fadeInUp">
+        
           <CodeContainer />
-        </Animated>
+      
       ),
     },
     {
@@ -32,17 +33,17 @@ const SideBar = () => {
     {
       path: '/graphql/policies',
       exact: true,
-      main: () => <h2>This will be our policies component</h2>,
+      main: () => <PoliciesContainer/>
     },
   ];
   return (
-    <Animated animationIn="fadeInDown">
+    <Animated animationIn="slideInLeft">
       <div style={{ display: 'flex' }}>
         <div
           id="nav"
           style={{
               padding: '10px',
-              backgroundColor: '#eb93ac',
+              backgroundColor: '#0d1e33',
             }}
         >
           <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />

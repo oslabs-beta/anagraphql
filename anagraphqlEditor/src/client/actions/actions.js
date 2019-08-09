@@ -57,3 +57,28 @@ export const getQueryResponse = query => (dispatch) => {
       dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
     });
 };
+
+export const saveConfiguration = rules => ({
+  type: types.SAVE_CONFIGURATION,
+  payload: rules,
+});
+
+export const updateNestedQueries = num => ({
+  type: types.UPDATE_NESTED_QUERIES,
+  payload: num,
+});
+
+export const updateFields = num => ({
+  type: types.UPDATE_FIELDS,
+  payload: num,
+});
+
+export const updateResolvers = num => ({
+  type: types.UPDATE_RESOLVERS,
+  payload: num,
+});
+
+export const updateCurrRule = index => ({
+  type: types.UPDATE_CURR_RULE,
+  payload: index,
+});
