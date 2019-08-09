@@ -1,9 +1,10 @@
-/* eslint-disable space-before-blocks */
+
 const renderGraphiql = require('./renderGraphiql');
 const anagraphCreator = require('./Parser/anagraphCreator');
-
+const schemaParser = require('./Parser/schemaParser');
+// const ruleValidator = require('./Parser/ruleValidator');
 const anagraphql = options => ((req, res, next) => {
-  if (req.body.operationName !== undefined){
+  if (req.body.operationName !== undefined) {
     return next();
   }
 
@@ -13,16 +14,24 @@ const anagraphql = options => ((req, res, next) => {
     res.end();
   }
   const { schema, graphiql, rules } = options;
+
+
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
+  let applicableRules;
+  if (rules !== undefined) {
+    applicableRules = schemaParser(schema);
+    console.log(applicableRules);
+    const validateRules = ruleValidator(applicableRules, rules);
+    if (validateRules.error) {
+      res.status(422).send('Rule violation');
+      res.end();
+    }
+  }
 
 
   if (req.body.query) {
     const anagraph = anagraphCreator(req.body.query);
     res.locals.anagraph = anagraph;
-    if (anagraph.analytics.maxNested > rules.maxNested) {
-      res.status(401).send({ String: 'Rule violation' });
-      return res.end();
-    }
   }
 
 
