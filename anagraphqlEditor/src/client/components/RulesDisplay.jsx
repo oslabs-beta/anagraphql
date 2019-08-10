@@ -9,14 +9,12 @@ const RulesDisplay = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        console.log(rulesObject);
         dispatch(saveConfiguration({ name: e.target.firstChild.value, rules: rulesObject }));
         e.target.firstChild.value = "";
     }
 
     const onClickHandler = (index) => {
         dispatch(updateCurrRule(index));
-        console.log(rulesList[index])
     }
 
     const list = rulesList.map((rule, index) => (
