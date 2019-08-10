@@ -19,10 +19,11 @@ const anagraphql = options => ((req, res, next) => {
 
 
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
-
+  let anagraph;
+  let applicableRules;
   if (req.body.query) {
     if (rules !== undefined) {
-      const applicableRules = schemaParser(schema);
+      applicableRules = schemaParser(schema);
       const validateRules = ruleValidator(applicableRules, rules);
       if (validateRules.error) {
         res.status(422).send({ error: validateRules.error });
@@ -30,7 +31,7 @@ const anagraphql = options => ((req, res, next) => {
       }
     }
 
-    const anagraph = anagraphCreator(req.body.query);
+    anagraph = anagraphCreator(req.body.query);
     const evaluation = queryValidator(anagraph, rules);
     if (evaluation.error) {
       res.status(422).send({ error: evaluation.error });
