@@ -6,7 +6,7 @@ import History from './History';
 // import MainContainer from "./containers/MainContainer.jsx";
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
-  const anagraph = useSelector(state => state.response.currAnagraph);
+  const currAnagraph = useSelector(state => state.response.currAnagraph);
 
   return (
     <div id="container">
@@ -15,7 +15,7 @@ const CodeContainer = () => {
         <JsonDisplay json={response} />
       </div>
       <div id="top">
-        <JsonDisplay json={anagraph} />
+        <JsonDisplay json={currAnagraph} />
         <JsonDisplay json={queryRules} />
       </div>
       <History />
