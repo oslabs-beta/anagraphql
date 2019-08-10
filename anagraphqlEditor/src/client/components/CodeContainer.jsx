@@ -16,7 +16,7 @@ const CodeContainer = () => {
       </div>
       <div id="top">
         <JsonDisplay json={anagraph} />
-        <JsonDisplay json={queryRules} />
+        {/* <JsonDisplay json={queryRules} /> */}
       </div>
       <History />
     </div>
