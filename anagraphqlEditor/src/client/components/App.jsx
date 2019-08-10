@@ -6,10 +6,6 @@ import SideBar from './SideBar';
 
 const App = () => (
   <div id="App">
-
-      <div id='topnav' >
-      
-      </div>
     <Router>
       <SideBar />
     </Router>
