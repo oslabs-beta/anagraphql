@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const rules = {
   specificResolvers: {
-    rootQueryType_authors: 3,
+    RootQueryType_authors: 3,
   },
   shallowResolvers: {
     authors: 2,
