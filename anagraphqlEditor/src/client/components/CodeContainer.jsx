@@ -11,13 +11,13 @@ const CodeContainer = () => {
   return (
     <div id="container">
       <div id="top">
-          <CodeEditor />
-          <JsonDisplay json={response} />
-        </div>
+        <CodeEditor />
+        <JsonDisplay json={response} />
+      </div>
       <div id="top">
-          <JsonDisplay json={anagraph} />
-          <JsonDisplay json={{ maxNested: 5 }} />
-    </div>
+        <JsonDisplay json={anagraph} />
+        <JsonDisplay json={{ maxNested: 5 }} />
+      </div>
       <History />
     </div>
   );

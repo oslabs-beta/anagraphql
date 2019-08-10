@@ -35,6 +35,7 @@ const CodeEditor = () => {
     query: state.query.query,
     schema: state.query.schema,
   }));
+
   const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
@@ -78,8 +79,8 @@ const CodeEditor = () => {
 
   return (
     <div>
-      <div id = "sendQuery">
-      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
+      <div id="sendQuery">
+        <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
       </div>
       <CodeMirror
         value={query}

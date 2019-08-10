@@ -33,8 +33,12 @@ export const getSchema = body => (dispatch) => {
   })
     .then(response => response.json())
     .then((schema) => {
-      dispatch({ type: types.GET_SCHEMA, payload: buildClientSchema(schema.data) });
-    });
+      dispatch({
+        type: types.GET_SCHEMA,
+        payload: buildClientSchema(schema.data),
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 export const updateCurrResponse = resp => ({
