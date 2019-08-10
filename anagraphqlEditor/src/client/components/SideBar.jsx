@@ -7,6 +7,7 @@ import {
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
+import Visualizer from './Visualizer';
 
 const SideBar = () => {
   const routes = [
@@ -22,17 +23,24 @@ const SideBar = () => {
     {
       path: '/graphql/about',
       exact: true,
-      main: () => <ReactMarkdown
-      source={readMe}
-      renderers={{
-        code: CodeBlock,
-      }}
-    />
+      main: () => (
+        <ReactMarkdown
+          source={readMe}
+          renderers={{
+            code: CodeBlock,
+          }}
+        />
+      ),
     },
     {
       path: '/graphql/policies',
       exact: true,
       main: () => <h2>This will be our policies component</h2>,
+    },
+    {
+      path: '/graphql/visualizer',
+      exact: true,
+      main: () => <Visualizer />,
     },
   ];
   return (
@@ -41,31 +49,33 @@ const SideBar = () => {
         <div
           id="nav"
           style={{
-              padding: '10px',
-              backgroundColor: '#eb93ac',
-            }}
+            padding: '10px',
+            backgroundColor: '#eb93ac',
+          }}
         >
           <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
           <ul style={{
-              listStyleType: 'none', padding: 0, height: '500px', width: '200px',
-            }}
-            >
-              <li><Link to="/graphql">Code Editor</Link></li>
-              <li><Link to="/graphql/about">About</Link></li>
-              <li><Link to="/graphql/policies">Policies</Link></li>
-            </ul>
+            listStyleType: 'none', padding: 0, height: '500px', width: '200px',
+          }}
+          >
+            <li><Link to="/graphql">Code Editor</Link></li>
+            <li><Link to="/graphql/about">About</Link></li>
+            <li><Link to="/graphql/policies">Policies</Link></li>
+            <li><Link to="/graphql/visualizer">Visualizer</Link></li>
+
+          </ul>
         </div>
         <div style={{ flex: 1, padding: '10px' }}>
           {routes.map(route => (
-              <Route
-            key={route.path}
-            path={route.path}
-            exact={route.exact}
-            component={route.main}
-          />
-            ))}
+            <Route
+              key={route.path}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
         </div>
-      
+
       </div>
     </Animated>
   );
