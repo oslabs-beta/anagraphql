@@ -8,9 +8,22 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
+const rules = {
+  specificResolvers: {
+    rootQueryType_authors: 3,
+  },
+  shallowResolvers: {
+    authors: 2,
+  },
+  maxNested: 4,
+  totalResolvers: 25,
+  totalFields: 60,
+};
+
+
 app.use('/graphql',
   (req, res, next) => next(),
-  anagraphql({ schema, rules: { maxNested: 3 }, graphiql: true }),
+  anagraphql({ schema, rules, graphiql: true }),
   graphqlHTTP({
     schema,
     // graphiql: true,
