@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-module.exports = (rules) => {
+module.exports = (rules, anagraph, applicableRules) => {
   const content = fs.readFileSync(path.join(__dirname, 'bundle.js'), 'utf-8');
   const readMe = fs.readFileSync(path.join(__dirname, 'README.md'), 'utf-8').replace(/`/g, '\\`');
   if (rules === undefined) {
