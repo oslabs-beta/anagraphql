@@ -43,7 +43,7 @@ const anagraphql = options => ((req, res, next) => {
 
   if (graphiql && req.method === 'GET') {
     if (rules === undefined) res.send(renderGraphiql());
-    if (rules) res.send(renderGraphiql(rules, anagraph, applicableRules));
+    if (rules) res.send(renderGraphiql(rules));
     res.end();
   }
 
