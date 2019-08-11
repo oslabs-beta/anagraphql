@@ -33,6 +33,7 @@ export const getSchema = body => (dispatch) => {
   })
     .then(response => response.json())
     .then((schema) => {
+      console.log(`INTROSPECTION RESPONSE applicableRules: ${JSON.stringify(schema.applicableRules)}`);
       dispatch({ type: types.GET_SCHEMA, payload: buildClientSchema(schema.data) });
     });
 };
@@ -42,20 +43,35 @@ export const updateCurrResponse = resp => ({
   payload: resp,
 });
 
-export const getQueryResponse = query => (dispatch) => {
+export const getQueryResponse = ({ query, rules }) => (dispatch) => {
   fetch('/graphql', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({
+      query,
+      override: false,
+      rules: {
+        specificResolvers: {
+          RootQueryType_authors: 3,
+        },
+        shallowResolvers: {
+          authors: 2,
+        },
+        maxNested: 2,
+        totalResolvers: 25,
+        totalFields: 60,
+      },
+    }),
     credentials: 'include',
   })
     .then(response => response.json())
     .then((data) => {
       dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
-    });
+    })
+    .catch(err => console.log(`error in fetch: ${err}`));
 };
 
 export const saveConfiguration = rules => ({
