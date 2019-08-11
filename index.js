@@ -6,7 +6,13 @@ const ruleValidator = require('./Parser/ruleValidator');
 const queryValidator = require('./Parser/queryValidator');
 
 const anagraphql = options => ((req, res, next) => {
-  const { schema, graphiql, rules} = options;
+   if (req.method !== 'GET' && req.method !== 'POST') {
+    res.setHeader('Allow', 'GET, POST');
+    res.status(405).send('GraphQL only supports GET and POST requests.');
+    res.end();
+  }
+
+  const { schema, graphiql, rules } = options;
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
   const applicableRules = schemaParser(schema);
 
@@ -21,12 +27,7 @@ const anagraphql = options => ((req, res, next) => {
     return next();
   }
 
-  if (req.method !== 'GET' && req.method !== 'POST') {
-    res.setHeader('Allow', 'GET, POST');
-    res.status(405).send('GraphQL only supports GET and POST requests.');
-    res.end();
-  }
-
+ 
 
   if (graphiql && req.method === 'GET') {
     if (!graphiql) return next();
