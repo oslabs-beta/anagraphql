@@ -10,7 +10,7 @@ const anagraphql = options => ((req, res, next) => {
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
   const applicableRules = schemaParser(schema);
 
-  if (req.body.operationName !== undefined) {
+  if (req.body.operationName !== undefined && graphiql) {
     var oldSend = res.send;
     res.send = function(...data){
         // arguments[0] (or `data`) contains the response body
