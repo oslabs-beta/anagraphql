@@ -5,9 +5,6 @@ import {
 
 const initialState = {
   currRule: queryRules || {
-    maxNested: 1,
-    totalResolvers: 1,
-    totalFields: 1,
     shallowResolvers: {},
     specificResolvers: {},
   },

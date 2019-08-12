@@ -5,24 +5,23 @@ import {
 } from '../actions/actions';
 
 const RulesConfiguration = () => {
-  const nestedQueriesLimit = useSelector(state => state.rules.currRule.numberOfNestedQueries);
-  const resolverLimit = useSelector(state => state.rules.currRule.numberOfResolvers);
-  const fieldLimit = useSelector(state => state.rules.currRule.numberOfFields);
-  const shallowResolvers = useSelector(state => state.rules.currRule.shallowResolvers);
+  const {
+    maxNested, totalResolvers, totalFields, shallowResolvers,
+  } = useSelector(state => state.rules.currRule);
   const applicableRules = useSelector(state => state.query.applicableRules);
   const dispatch = useDispatch();
   return (
     <div id="rules-grid">
       <div className="rules-col">
-        <p>Number of nested queries</p>
-        <input type="range" min="0" max="20" value={nestedQueriesLimit} onChange={(e) => { dispatch(updateNestedQueries(Number(e.target.value))); }} id="numberOfNestedQueries" />
-        {nestedQueriesLimit}
-        <p>Number of resolvers</p>
-        <input type="range" min="0" max="20" value={resolverLimit} onChange={(e) => { dispatch(updateResolvers(Number(e.target.value))); }} id="numberOfResolvers" />
-        {resolverLimit}
-        <p>Number of fields</p>
-        <input type="range" min="0" max="20" value={fieldLimit} onChange={(e) => { dispatch(updateFields(Number(e.target.value))); }} id="numberOfFields" />
-        {fieldLimit}
+        <p>Max number of nested queries allowed</p>
+        <input type="range" min="0" max="20" value={maxNested} onChange={(e) => { dispatch(updateNestedQueries(Number(e.target.value))); }} id="numberOfNestedQueries" />
+        {maxNested}
+        <p>Max number of resolvers allowed</p>
+        <input type="range" min="0" max="20" value={totalResolvers} onChange={(e) => { dispatch(updateResolvers(Number(e.target.value))); }} id="numberOfResolvers" />
+        {totalResolvers}
+        <p>Max number of fields allowed</p>
+        <input type="range" min="0" max="20" value={totalFields} onChange={(e) => { dispatch(updateFields(Number(e.target.value))); }} id="numberOfFields" />
+        {totalFields}
       </div>
       <div className="rules-col">
         {Object.keys(applicableRules.shallowResolvers).map(cv => (
