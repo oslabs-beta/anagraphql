@@ -31,6 +31,9 @@ import 'codemirror-graphql/mode';
 const CodeEditor = () => {
   const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
 
+  const result = useSelector(state => state.rules.currRule);
+  console.log(result);
+
   const { query, schema } = useSelector(state => ({
     query: state.query.query,
     schema: state.query.schema,
