@@ -1,15 +1,19 @@
 import {
-  UPDATE_CURR_RULE, SAVE_CONFIGURATION, UPDATE_NESTED_QUERIES, UPDATE_RESOLVERS, UPDATE_FIELDS,
+  UPDATE_CURR_RULE, SAVE_CONFIGURATION, UPDATE_NESTED_QUERIES,
+  UPDATE_RESOLVERS, UPDATE_FIELDS, UPDATE_SHALLOW_RESOLVERS,
 } from '../constants/actionTypes';
 
 const initialState = {
   currRule: queryRules || {
-    numberOfNestedQueries: 1,
-    numberOfResolvers: 1,
-    numberOfFields: 1,
+    maxNested: 1,
+    totalResolvers: 1,
+    totalFields: 1,
+    shallowResolvers: {},
+    specificResolvers: {},
   },
-  rules: queryRules ? [queryRules] : [],
+  rules: queryRules ? [{ name: 'SERVER CONFIG', rules: queryRules }] : [],
 };
+
 
 const rulesReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,7 +32,7 @@ const rulesReducer = (state = initialState, action) => {
         ...state,
         currRule: {
           ...state.currRule,
-          numberOfNestedQueries: action.payload,
+          maxNested: action.payload,
         },
       };
     case UPDATE_FIELDS:
@@ -36,7 +40,7 @@ const rulesReducer = (state = initialState, action) => {
         ...state,
         currRule: {
           ...state.currRule,
-          numberOfFields: action.payload,
+          totalFields: action.payload,
         },
       };
     case UPDATE_RESOLVERS:
@@ -44,7 +48,16 @@ const rulesReducer = (state = initialState, action) => {
         ...state,
         currRule: {
           ...state.currRule,
-          numberOfResolvers: action.payload,
+          totalResolvers: action.payload,
+        },
+      };
+    case UPDATE_SHALLOW_RESOLVERS:
+      // console.log({ ...state.shallowResolvers, ...action.payload });
+      return {
+        ...state,
+        currRule: {
+          ...state.currRule,
+          shallowResolvers: { ...state.currRule.shallowResolvers, ...action.payload },
         },
       };
     default:
