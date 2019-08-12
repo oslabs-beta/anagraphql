@@ -58,7 +58,7 @@ const SideBar = () => {
             <li><Link to="/graphql/policies">Policies</Link></li>
           </ul>
         </div>
-        <div style={{ flex: 1, padding: '10px' }}>
+        <div style={{ flex: 1, padding: '0px' }}>
           {routes.map(route => (
             <Route
               key={route.path}

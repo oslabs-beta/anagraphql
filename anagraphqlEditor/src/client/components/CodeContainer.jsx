@@ -9,16 +9,20 @@ const CodeContainer = () => {
   const currAnagraph = useSelector(state => state.response.currAnagraph);
   const currRule = useSelector(state => state.rules.currRule);
   return (
-    <div id="container">
-      <div id="top">
+    <div className="grid-container">
+      <div className="Timeline">
+        <History />
+      </div>
+      <div className="GraphQL-Query">
         <CodeEditor />
-        <JsonDisplay json={response} />
       </div>
-      <div id="top">
-        <JsonDisplay json={currAnagraph} />
-        <JsonDisplay json={currRule} />
+      <div className="Response"><JsonDisplay json={response} /></div>
+      <div className="Policies">
+        <JsonDisplay json={queryRules} />
       </div>
-      <History />
+      <div className="Anagraph">
+        <JsonDisplay json={anagraph} />
+      </div>
     </div>
   );
 };

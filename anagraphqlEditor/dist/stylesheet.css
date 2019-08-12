@@ -1,3 +1,4 @@
+
 .history{
     display:flex;
 }
@@ -24,10 +25,11 @@
 }
 body {
     margin: 0;
+    padding: 0;
     height: 100%;
     background-color: #f1fff3;
- 
-   
+    font-family: 'Montserrat', sans-serif;
+
 }
 #sendQuery{
     text-align: center;
@@ -38,7 +40,7 @@ body {
     background-color: #0d1e33;
    height: 50px;
   }
-  
+
 
   .topnav a {
     float: left;
@@ -48,13 +50,13 @@ body {
     padding: 14px 16px;
     text-decoration: none;
   }
-  
+
 #container {
     /* display: flex;
     flex-direction: column; */
     display:grid;
     grid-template-rows: 50% 50%;
-    
+
 
 }
 #top{
@@ -101,13 +103,11 @@ body {
     /* box-shadow: 0 5px #775d5d; */
     transform: translateY(40px);
     font-size: 20px;
-    
+
 }
-   
+
 #nav a.active {
     font-family: Arial, Helvetica, sans-serif;
- 
-    
 }
 
 #nav a:hover:not(.active) {
@@ -118,3 +118,21 @@ body {
 
 }
 
+.grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 100px;
+    grid-template-areas: "GraphQL-Query Response" "Anagraph Policies" "Timeline Timeline";
+  }
+
+  .Timeline { grid-area: Timeline;  border: 1px solid green;}
+
+  .GraphQL-Query { grid-area: GraphQL-Query; border: 1px solid green; }
+
+  .Response { grid-area: Response; border: 1px solid green; }
+
+  .Policies { grid-area: Policies; border: 1px solid green;}
+
+  .Anagraph { grid-area: Anagraph;  border: 1px solid green;}
