@@ -2,11 +2,13 @@
 Anagraph Object tests
 ************/
 const anagraphCreator = require('../anagraphCreator')
-const sampleQuery = '{ author { firstname }}'
+
+const sampleQuery = '“{ authors { firstname books { title authors { firstname books { title authors { firstname books { title } } } } } } }“'
+
 const anagraph = anagraphCreator(sampleQuery)
 
 describe('AnagraphCreator', () => {
-  
+
   test('is a function', () => {
     expect(typeof anagraphCreator).toBe('function');
   })
@@ -39,13 +41,13 @@ describe('AnagraphCreator', () => {
     expect(anagraph.analytics).toHaveProperty('resolvers')
   })
 
-  test('the value of anagraph.analytics.combineFields is an number', () => {
-    expect(typeof anagraph.analytics.combineFields).toBe('number')
-  })
+  // test('the value of anagraph.analytics.combineFields is an number', () => {
+  //   expect(typeof anagraph.analytics.combineFields).toBe('number')
+  // })
 
-  test('the value of anagraph.analytics.combineReducers is an number', () => {
-    expect(typeof anagraph.analytics.combineReducers).toBe('number')
-  })
+  // test('the value of anagraph.analytics.combineReducers is an number', () => {
+  //   expect(typeof anagraph.analytics.combineReducers).toBe('number')
+  // })
 
   test('the value of anagraph.analytics.fields is an object', () => {
     expect(typeof anagraph.analytics.fields).toBe('object')
@@ -59,19 +61,6 @@ describe('AnagraphCreator', () => {
     expect(typeof anagraph.analytics.resolvers).toBe('object')
   })
 
-
-  // test('has a property called analytics that is an object', () => {
-  //   expect(anagraph.analytics).toBe('object')
-  // })
-
-  // test('the analytics object returns an object with two properties: the number of resolvers and the number of fields', () => {
-  //   const countResolvers = anagraph.analytics
-  //   expect(countResolvers).toHaveReturnedWith(expect.objectContaining({
-  //     "resolvers": expect(anagraph.analytics.resolvers).toBe('object'),
-  //     "fields": expect(anagraph.analytics.fields).toBe('object')
-  //   })
-  //   )
-  // })
 
 
 
