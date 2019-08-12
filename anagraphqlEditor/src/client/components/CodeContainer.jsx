@@ -11,17 +11,21 @@ const CodeContainer = () => {
   const result = useSelector(state => state.rules.currRule);
 
   return (
-    <div id="container">
-      <div id="top">
+    <div className="grid-container">
+      <div className="Timeline">
+        <History />
+      </div>
+      <div className="GraphQL-Query">
         <CodeEditor />
-        <JsonDisplay json={response} />
       </div>
       <div id="top">
         <JsonDisplay json={anagraph} />
         <JsonDisplay json={result} />
         <DropDownListOfRules/>
       </div>
-      <History />
+      <div className="Anagraph">
+        <JsonDisplay json={anagraph} />
+      </div>
     </div>
   );
 };
