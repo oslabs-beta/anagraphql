@@ -7,6 +7,7 @@ import {
 const initialState = {
   query: '',
   schema: null,
+  applicableRules: null,
 };
 
 // The queryReducer function contains a seriers of conditionals that perform a specific action based on what action from our imported actions are passed in as an argument
@@ -15,7 +16,11 @@ const queryReducer = (state = initialState, action) => {
     case UPDATE_QUERY:
       return { ...state, query: action.payload };
     case GET_SCHEMA:
-      return { ...state, schema: action.payload };
+      return {
+        ...state,
+        schema: action.payload.schema,
+        applicableRules: action.payload.applicableRules,
+      };
     default:
       return state;
   }
