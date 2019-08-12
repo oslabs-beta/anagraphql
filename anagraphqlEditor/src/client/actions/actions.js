@@ -17,8 +17,6 @@ export const updateCurrAnagraph = anagraph => ({
 });
 
 export const getSchema = body => (dispatch) => {
-  console.log(body);
-  console.log(JSON.stringify(body));
   fetch('/graphql', {
     method: 'POST',
     headers: {
@@ -30,7 +28,6 @@ export const getSchema = body => (dispatch) => {
   })
     .then(response => response.json())
     .then((schema) => {
-      console.log(`INTROSPECTION RESPONSE applicableRules: ${JSON.stringify(schema.applicableRules)}`);
       dispatch({
         type: types.GET_SCHEMA,
         payload: {
