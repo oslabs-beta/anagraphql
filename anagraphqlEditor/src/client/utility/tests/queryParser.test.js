@@ -1,11 +1,14 @@
 /*********** 
 Query Parser tests
 ************/
-test('queryParser', () => {
-  const parser = require('../queryParser')
-  
-  expect(parser).toBeDefined();
-  expect(parser).toBeTruthy();
-  expect(typeof parser).toBe('function')
+const queryParser = require('../queryParser')
 
-});
+describe('The queryParser function', () => {
+  test('is a function', () => {
+    expect(typeof queryParser).toBe('function')
+
+  })
+
+
+})
+

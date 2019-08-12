@@ -1,9 +1,11 @@
 /*********** 
 stringProperties tests
 ************/
-test('String Validator returns a boolean', () => {
-  const stringValidator = require('../stringValidator')
-  
-  expect(stringValidator).toBeTruthy()
+const stringValidator = require('../stringValidator')
+
+describe('The String Validator', () => {
+  test('should return a boolean', () => {
+    expect(stringValidator).toBeTruthy()
   })
-  
+
+})
