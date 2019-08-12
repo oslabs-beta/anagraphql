@@ -70,9 +70,6 @@ const CodeEditor = () => {
     if (!hasErrors) {
       prettifyQuery();
       dispatch(getQueryResponse({ query, rules }));
-      // dispatch()
-      // const anagraph = anagraphCreator(query);
-      // dispatch(createAnagraph(anagraph));
       dispatch(updateQueryHistory(print(parse(query))));
     }
   };
