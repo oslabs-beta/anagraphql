@@ -11,17 +11,14 @@ export const updateQuery = query => ({
   payload: query,
 });
 
-export const createAnagraph = anagraph => ({
-  type: types.CREATE_ANAGRAPH,
-  payload: anagraph,
-});
-
 export const updateCurrAnagraph = anagraph => ({
   type: types.UPDATE_CURR_ANAGRAPH,
   payload: anagraph,
 });
 
 export const getSchema = body => (dispatch) => {
+  console.log(body);
+  console.log(JSON.stringify(body));
   fetch('/graphql', {
     method: 'POST',
     headers: {
@@ -34,7 +31,13 @@ export const getSchema = body => (dispatch) => {
     .then(response => response.json())
     .then((schema) => {
       console.log(`INTROSPECTION RESPONSE applicableRules: ${JSON.stringify(schema.applicableRules)}`);
-      dispatch({ type: types.GET_SCHEMA, payload: buildClientSchema(schema.data) });
+      dispatch({
+        type: types.GET_SCHEMA,
+        payload: {
+          applicableRules: schema.applicableRules,
+          schema: buildClientSchema(schema.data),
+        },
+      });
     });
 };
 
@@ -97,4 +100,9 @@ export const updateResolvers = num => ({
 export const updateCurrRule = index => ({
   type: types.UPDATE_CURR_RULE,
   payload: index,
+});
+
+export const updateShallowResolvers = obj => ({
+  type: types.UPDATE_SHALLOW_RESOLVERS,
+  payload: obj,
 });
