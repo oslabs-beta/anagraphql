@@ -6,8 +6,8 @@ import History from './History';
 // import MainContainer from "./containers/MainContainer.jsx";
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
-  const anagraph = useSelector(state => state.response.currAnagraph);
-
+  const currAnagraph = useSelector(state => state.response.currAnagraph);
+  const currRule = useSelector(state => state.rules.currRule);
   return (
     <div className="grid-container">
       <div className="Timeline">
@@ -18,10 +18,10 @@ const CodeContainer = () => {
       </div>
       <div className="Response"><JsonDisplay json={response} /></div>
       <div className="Policies">
-        <JsonDisplay json={queryRules} />
+        <JsonDisplay json={currRule} />
       </div>
       <div className="Anagraph">
-        <JsonDisplay json={anagraph} />
+        <JsonDisplay json={currAnagraph} />
       </div>
     </div>
   );

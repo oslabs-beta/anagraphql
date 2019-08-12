@@ -3,6 +3,20 @@
     display:flex;
 }
 
+#rules-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.json-title {
+    border-style: solid;
+    border-width: medium;
+}
+
+#rules-grid {
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
 .current {
     border-width: 2px;
    border-bottom-width:2px;
