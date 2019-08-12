@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
+// const queryRules = JSON.parse(\`${JSON.stringify(rules)}\`);
+
 module.exports = (rules) => {
   const content = fs.readFileSync(path.join(__dirname, 'bundle.js'), 'utf-8');
   const readMe = fs.readFileSync(path.join(__dirname, 'README.md'), 'utf-8').replace(/`/g, '\\`');
@@ -16,7 +18,6 @@ module.exports = (rules) => {
     <title>AnagraphQL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script>const readMe = \`${readMe}\`
-            const queryRules = JSON.parse(\`${JSON.stringify(rules)}\`);
     </script>
 </head>
 <body>
