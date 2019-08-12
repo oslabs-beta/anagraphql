@@ -18,10 +18,10 @@ const CodeContainer = () => {
       </div>
       <div className="Response"><JsonDisplay json={response} /></div>
       <div className="Policies">
-        <JsonDisplay json={queryRules} />
+        <JsonDisplay json={currRule} />
       </div>
       <div className="Anagraph">
-        <JsonDisplay json={anagraph} />
+        <JsonDisplay json={currAnagraph} />
       </div>
     </div>
   );
