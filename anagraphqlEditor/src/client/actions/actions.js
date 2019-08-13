@@ -43,7 +43,7 @@ export const updateCurrResponse = resp => ({
   payload: resp,
 });
 
-export const getQueryResponse = ({ query, rules }) => (dispatch) => {
+export const getQueryResponse = ({ query, currRule }) => (dispatch) => {
   fetch('/graphql', {
     method: 'POST',
     headers: {
@@ -52,18 +52,7 @@ export const getQueryResponse = ({ query, rules }) => (dispatch) => {
     },
     body: JSON.stringify({
       query,
-      override: false,
-      rules: {
-        specificResolvers: {
-          RootQueryType_authors: 3,
-        },
-        shallowResolvers: {
-          authors: 2,
-        },
-        maxNested: 2,
-        totalResolvers: 25,
-        totalFields: 60,
-      },
+      currRule,
     }),
     credentials: 'include',
   })
