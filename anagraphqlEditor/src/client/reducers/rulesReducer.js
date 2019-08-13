@@ -1,6 +1,7 @@
 import {
   UPDATE_CURR_RULE, SAVE_CONFIGURATION, UPDATE_NESTED_QUERIES,
   UPDATE_RESOLVERS, UPDATE_FIELDS, UPDATE_SHALLOW_RESOLVERS,
+  UPDATE_SPECIFIC_RESOLVERS, DELETE_RULE,
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -49,7 +50,6 @@ const rulesReducer = (state = initialState, action) => {
         },
       };
     case UPDATE_SHALLOW_RESOLVERS:
-      // console.log({ ...state.shallowResolvers, ...action.payload });
       return {
         ...state,
         currRule: {
@@ -57,6 +57,32 @@ const rulesReducer = (state = initialState, action) => {
           shallowResolvers: { ...state.currRule.shallowResolvers, ...action.payload },
         },
       };
+    case UPDATE_SPECIFIC_RESOLVERS:
+      return {
+        ...state,
+        currRule: {
+          ...state.currRule,
+          specificResolvers: { ...state.currRule.specificResolvers, ...action.payload },
+        },
+      };
+    case DELETE_RULE: {
+      if (action.payload.length === 2) {
+        const temp = {};
+        temp[action.payload[0]] = { ...state.currRule[action.payload[0]] };
+        delete temp[action.payload[0]][action.payload[1]];
+        return {
+          ...state,
+          currRule: {
+            ...state.currRule,
+            ...temp,
+          },
+        };
+      }
+
+      const temp = { ...state, currRule: { ...state.currRule } };
+      delete temp.currRule[action.payload[0]];
+      return temp;
+    }
     default:
       return state;
   }
