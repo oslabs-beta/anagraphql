@@ -30,12 +30,16 @@ import 'codemirror-graphql/mode';
 const CodeEditor = () => {
   const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
 
-  const { query, schema, rules } = useSelector(state => ({
+  const {
+    query, schema, currRule, serverRule,
+  } = useSelector(state => ({
     query: state.query.query,
     schema: state.query.schema,
-    rules: state.rules.currRule,
+    currRule: state.rules.currRule,
+    serverRule: state.rules.rules[0],
   }));
   const [hasErrors, setErrors] = useState(true);
+  const [merge, setMerge] = useState(true);
   const dispatch = useDispatch();
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
   const options = {
@@ -69,7 +73,9 @@ const CodeEditor = () => {
   const handleQuery = () => {
     if (!hasErrors) {
       prettifyQuery();
-      dispatch(getQueryResponse({ query, rules }));
+      const payload = merge ? { query, currRule: { ...serverRule.rules, ...currRule } } : { query, currRule };
+      console.log(payload);
+      dispatch(getQueryResponse(payload));
       dispatch(updateQueryHistory(print(parse(query))));
     }
   };
