@@ -15,7 +15,7 @@ const DropDownButton = () => {
     };
     return (
         <div className="dropdown" style={{background: 'red'}}>
-            <button onClick={() => setToggle(true)}>Policies</button>
+            <button onClick={() => toggle ? setToggle(false) : setToggle(true) }>Policies</button>
             {toggle ? (
                 <ul>
                     {listOfRules}
