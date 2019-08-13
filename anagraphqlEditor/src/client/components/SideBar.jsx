@@ -4,6 +4,7 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
@@ -36,12 +37,19 @@ const SideBar = () => {
     {
       path: '/graphql/policies',
       exact: true,
+<<<<<<< HEAD
       main: () => <PoliciesContainer />,
     },
     {
       path: '/graphql/visualizer',
       exact: true,
       main: () => <Visualizer />,
+=======
+      main: () => {
+        if (!useSelector(state => state.query.applicableRules)) return <h4>Loading...</h4>;
+        return <PoliciesContainer />;
+      },
+>>>>>>> dev
     },
   ];
   return (
@@ -62,11 +70,14 @@ const SideBar = () => {
             <li><Link to="/graphql">Code Editor</Link></li>
             <li><Link to="/graphql/about">About</Link></li>
             <li><Link to="/graphql/policies">Policies</Link></li>
+<<<<<<< HEAD
             <li><Link to="/graphql/visualizer">Visualizer</Link></li>
 
+=======
+>>>>>>> dev
           </ul>
         </div>
-        <div style={{ flex: 1, padding: '10px' }}>
+        <div style={{ flex: 1, padding: '0px' }}>
           {routes.map(route => (
             <Route
               key={route.path}

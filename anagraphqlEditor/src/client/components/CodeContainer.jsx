@@ -6,19 +6,29 @@ import History from './History';
 // import MainContainer from "./containers/MainContainer.jsx";
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
-  const anagraph = useSelector(state => state.response.currAnagraph);
-
+  const currAnagraph = useSelector(state => state.response.currAnagraph);
+  const currRule = useSelector(state => state.rules.currRule);
   return (
-    <div id="container">
-      <div id="top">
-        <CodeEditor />
-        <JsonDisplay json={response} />
+    <div className="grid-container">
+      <div className="Timeline">
+        <History />
       </div>
+      <div className="GraphQL-Query">
+        <CodeEditor />
+      </div>
+<<<<<<< HEAD
       <div id="top">
         <JsonDisplay json={anagraph} />
         {/* <JsonDisplay json={queryRules} /> */}
+=======
+      <div className="Response"><JsonDisplay json={response} /></div>
+      <div className="Policies">
+        <JsonDisplay json={currRule} />
       </div>
-      <History />
+      <div className="Anagraph">
+        <JsonDisplay json={currAnagraph} />
+>>>>>>> dev
+      </div>
     </div>
   );
 };

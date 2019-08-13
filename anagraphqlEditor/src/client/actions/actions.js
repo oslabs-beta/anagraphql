@@ -11,11 +11,6 @@ export const updateQuery = query => ({
   payload: query,
 });
 
-export const createAnagraph = anagraph => ({
-  type: types.CREATE_ANAGRAPH,
-  payload: anagraph,
-});
-
 export const updateCurrAnagraph = anagraph => ({
   type: types.UPDATE_CURR_ANAGRAPH,
   payload: anagraph,
@@ -35,10 +30,19 @@ export const getSchema = body => (dispatch) => {
     .then((schema) => {
       dispatch({
         type: types.GET_SCHEMA,
+<<<<<<< HEAD
         payload: buildClientSchema(schema.data),
       });
     })
     .catch(err => console.log(err));
+=======
+        payload: {
+          applicableRules: schema.applicableRules,
+          schema: buildClientSchema(schema.data),
+        },
+      });
+    });
+>>>>>>> dev
 };
 
 export const updateCurrResponse = resp => ({
@@ -46,20 +50,35 @@ export const updateCurrResponse = resp => ({
   payload: resp,
 });
 
-export const getQueryResponse = query => (dispatch) => {
+export const getQueryResponse = ({ query, rules }) => (dispatch) => {
   fetch('/graphql', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({
+      query,
+      override: false,
+      rules: {
+        specificResolvers: {
+          RootQueryType_authors: 3,
+        },
+        shallowResolvers: {
+          authors: 2,
+        },
+        maxNested: 2,
+        totalResolvers: 25,
+        totalFields: 60,
+      },
+    }),
     credentials: 'include',
   })
     .then(response => response.json())
     .then((data) => {
       dispatch({ type: types.GET_QUERY_RESPONSE, payload: data });
-    });
+    })
+    .catch(err => console.log(`error in fetch: ${err}`));
 };
 
 export const saveConfiguration = rules => ({
@@ -85,4 +104,9 @@ export const updateResolvers = num => ({
 export const updateCurrRule = index => ({
   type: types.UPDATE_CURR_RULE,
   payload: index,
+});
+
+export const updateShallowResolvers = obj => ({
+  type: types.UPDATE_SHALLOW_RESOLVERS,
+  payload: obj,
 });
