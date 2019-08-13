@@ -36,34 +36,38 @@ const anagraphql = options => ((req, res, next) => {
     return res.end();
   }
 
-  // let anagraph;
-  // let applicableRules;
-  const { override } = req.body;
-  console.log(`RULES IN BACKEND: ${JSON.stringify(override ? req.body.rules : rules || req.body.rules)}`);
   if (req.body.query) {
-    if (rules || req.body.rules) {
-      // applicableRules = schemaParser(schema);
-      const validateRules = ruleValidator(applicableRules, override ? req.body.rules : rules || req.body.rules);
+    const RULES_TO_CHECK = req.body.currRule || rules
+    console.log(`RULES IN BACKEND: ${JSON.stringify(RULES_TO_CHECK)}`);
+    const anagraph = anagraphCreator(req.body.query);
+
+    if (RULES_TO_CHECK) {
+      const validateRules = ruleValidator(applicableRules, RULES_TO_CHECK);
       if (validateRules.error) {
         res.status(422).send({ error: validateRules.error });
         return res.end();
       }
+      const evaluation = queryValidator(anagraph, RULES_TO_CHECK);
+      if (evaluation.error) {
+        res.status(422).send({ error: evaluation.error });
+        return res.end();
+      }
     }
 
-    const anagraph = anagraphCreator(req.body.query);
-    const evaluation = queryValidator(anagraph, override ? req.body.rules : rules || req.body.rules);
-    if (evaluation.error) {
-      res.status(422).send({ error: evaluation.error });
-      return res.end();
+
+    if (graphiql) {
+      const oldSend = res.send;
+      res.send = function(...data){
+      // arguments[0] (or `data`) contains the response body
+      res.send = oldSend
+      data[0] = JSON.stringify({ ...JSON.parse(data[0]), anagraph });
+        oldSend.apply(res, data);
+      }
+      return next();
     }
-    const oldSend = res.send;
-    res.send = function(...data){
-    // arguments[0] (or `data`) contains the response body
-    res.send = oldSend
-    data[0] = JSON.stringify({ ...JSON.parse(data[0]), anagraph });
-      oldSend.apply(res, data);
-    }
+
     return next();
+
   }
 });
 
