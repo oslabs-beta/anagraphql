@@ -4,7 +4,6 @@ Anagraph Object tests
 const anagraphCreator = require('../anagraphCreator')
 
 const sampleQuery = '“{ authors { firstname books { title authors { firstname books { title authors { firstname books { title } } } } } } }“'
-
 const anagraph = anagraphCreator(sampleQuery)
 
 describe('AnagraphCreator', () => {

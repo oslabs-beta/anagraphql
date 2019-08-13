@@ -7,6 +7,11 @@ const sampleString = '“{ authors { firstname books { title authors { firstname
 
 describe('stringProperties', () => {
 
+  test('should throw an error on an empty string', () => {
+    const emptyString = () => stringProperties('');
+    expect(emptyString).toThrow(TypeError);
+  });
+
   test('is an object', () => {
     expect(typeof stringProperties).toBe('object');
   })
