@@ -15,9 +15,7 @@ const SideBar = () => {
       path: '/graphql',
       exact: true,
       main: () => (
-
         <CodeContainer />
-
       ),
     },
     {
@@ -45,7 +43,8 @@ const SideBar = () => {
           id="nav"
           style={{
             padding: '10px',
-            backgroundColor: '#0d1e33',
+            backgroundColor: '#FAFAFA',
+            borderRight: 'border-left: 1px solid #bbb',
           }}
         >
           <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
@@ -53,12 +52,17 @@ const SideBar = () => {
             listStyleType: 'none', padding: 0, height: '500px', width: '200px',
           }}
           >
-            <li><Link to="/graphql">Code Editor</Link></li>
+            <li><Link to="/graphql">Query</Link></li>
             <li><Link to="/graphql/about">About</Link></li>
             <li><Link to="/graphql/policies">Policies</Link></li>
           </ul>
         </div>
-        <div style={{ flex: 1, padding: '0px' }}>
+        <div style={{
+          flex: 1,
+          padding: '0px',
+          borderRight: 'border-left: 1px solid #bbb',
+        }}
+        >
           {routes.map(route => (
             <Route
               key={route.path}

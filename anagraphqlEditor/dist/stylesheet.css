@@ -9,11 +9,17 @@
    border-bottom-color:Black;
    border-bottom-style: solid;
 }
+.CodeMirror {
+    border: 1px solid #eee;
+    height: 100%;
+  }
+
 body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #f1fff3;
+    color: #333;
+    background-color: #FFF;
     font-family: 'Montserrat', sans-serif;
 
 }
@@ -21,30 +27,8 @@ body {
     text-align: center;
 }
 
-#topnav {
-
-    background-color: #0d1e33;
-   height: 50px;
-  }
 
 
-  .topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-#container {
-    /* display: flex;
-    flex-direction: column; */
-    display:grid;
-    grid-template-rows: 50% 50%;
-
-
-}
 #top{
     display:grid;
     grid-template-columns: 50% 50%;
@@ -59,66 +43,97 @@ body {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #f1f1f1;
+    background-color: #FAFAFA;
     height: 100vh;
+    border-right: 1px solid #bbb;
     /* overflow: auto; */
     /* box-shadow: inset -4px 0px 15px #967d7d; */
 
 }
+
+.timelineFlex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
 #nav img{
     max-width: 100%;
     max-height:8rem;
      display: block;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.8;
-  border-radius: 100px;
+  opacity: 0.6;
 }
 
 #nav a {
     display: block;
-    margin: 10px;
-    color: white;
-    padding: 16px;
+    color: #333;
     text-decoration: none;
-    border: 1px solid;
     text-shadow: 2px;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    border-radius: 100px;
     /* box-shadow: 0 5px #775d5d; */
     transform: translateY(40px);
     font-size: 20px;
+    padding-top: 15px;
 
 }
 
-#nav a.active {
-    font-family: Arial, Helvetica, sans-serif;
+#nav a:hover {
+    text-decoration: underline;
 }
 
-#nav a:hover:not(.active) {
-    background-color: #23364d;
-    color: white;
+h2 {
+    background-color: #FAFAFA;
+    color: #666;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3vh;
+}
+
+h2.query {
+    background-color: #FAFAFA;
+    color: #222;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3vh;
+}
+
+.historyTimeline {
+    width: 90% !important;
+    height: 50px !important;
+}
+#timeline{ direction: rtl}
+
+option {
+    size: 30px;
+    color: green;
+}
+.marker {
+    padding: 5px;
+    width: 88%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.historySlider  {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-
+    width: 90%;
 }
+
 
 .grid-container {
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 100px;
+    grid-template-rows: 5fr 5fr 2fr;
     grid-template-areas: "GraphQL-Query Response" "Anagraph Policies" "Timeline Timeline";
   }
 
-  .Timeline { grid-area: Timeline;  border: 1px solid green;}
-
-  .GraphQL-Query { grid-area: GraphQL-Query; border: 1px solid green; }
-
-  .Response { grid-area: Response; border: 1px solid green; }
-
-  .Policies { grid-area: Policies; border: 1px solid green;}
-
-  .Anagraph { grid-area: Anagraph;  border: 1px solid green;}
+  .Timeline { grid-area: Timeline;  border-top: 1px solid #bbb;}
+  .GraphQL-Query { grid-area: GraphQL-Query; border-bottom: 1px solid #bbb;}
+  .Response { grid-area: Response; border-left: 1px solid #bbb;  border-bottom: 1px solid #bbb; }
+  .Policies { grid-area: Policies; border-left: 1px solid #bbb;}
+  .Anagraph { grid-area: Anagraph; }
