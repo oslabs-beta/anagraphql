@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import CodeEditor from './CodeEditor';
 import JsonDisplay from './JsonDisplay';
 import History from './History';
+import DropDownButton from './DropDownButton';
 // import MainContainer from "./containers/MainContainer.jsx";
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
@@ -19,6 +20,7 @@ const CodeContainer = () => {
       <div className="Response"><JsonDisplay json={response} /></div>
       <div className="Policies">
         <JsonDisplay json={currRule} />
+        <DropDownButton/>
       </div>
       <div className="Anagraph">
         <JsonDisplay json={currAnagraph} />
