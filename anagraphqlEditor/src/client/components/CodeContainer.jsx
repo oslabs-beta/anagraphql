@@ -20,16 +20,18 @@ const CodeContainer = () => {
         <CodeEditor />
       </div>
       <div className="Response">
-
         <Headline header="Response" />
         <JsonDisplay json={response} />
 
       </div>
       <div className="Policies">
 
+        <Headline header="Policies" />
         <JsonDisplay json={currRule} />
       </div>
       <div className="Anagraph">
+
+        <Headline header="Anagraph" />
         <JsonDisplay json={currAnagraph} />
 
       </div>
