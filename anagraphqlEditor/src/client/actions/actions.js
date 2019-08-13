@@ -110,3 +110,13 @@ export const updateShallowResolvers = obj => ({
   type: types.UPDATE_SHALLOW_RESOLVERS,
   payload: obj,
 });
+
+export const updateSpecificResolvers = obj => ({
+  type: types.UPDATE_SPECIFIC_RESOLVERS,
+  payload: obj,
+});
+
+export const deleteRule = (...params) => ({
+  type: types.DELETE_RULE,
+  payload: params,
+});
