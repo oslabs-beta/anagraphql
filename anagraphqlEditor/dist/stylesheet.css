@@ -5,7 +5,7 @@
 
 #rules-container {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
 }
 
 .json-title {
@@ -13,9 +13,9 @@
     border-width: medium;
 }
 
-#rules-grid {
-    display:grid;
-    grid-template-columns: 50% 50%;
+#rules {
+    display:flex;
+    flex-direction: column;
 }
 .current {
     border-width: 2px;
