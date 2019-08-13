@@ -7,12 +7,13 @@
     "test": "jest",
     "dev": "NODE_ENV=development webpack-dev-server --open",
     "build": "NODE_ENV=production webpack",
-    "start":"bash buildRun.sh"
+    "start": "bash buildRun.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "codemirror": "^5.48.2",
     "codemirror-graphql": "^0.8.3",
     "express": "^4.17.1",
@@ -20,6 +21,7 @@
     "graphql-language-service-parser": "^1.2.2",
     "react": "^16.8.6",
     "react-animated-css": "^1.2.1",
+    "react-bootstrap": "^1.0.0-beta.11",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
