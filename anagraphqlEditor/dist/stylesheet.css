@@ -3,6 +3,20 @@
     display:flex;
 }
 
+#rules-container {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.json-title {
+    border-style: solid;
+    border-width: medium;
+}
+
+#rules {
+    display:flex;
+    flex-direction: column;
+}
 .current {
     border-width: 2px;
    border-bottom-width:2px;

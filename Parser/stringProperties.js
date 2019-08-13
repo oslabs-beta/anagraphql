@@ -9,16 +9,21 @@ module.exports = {
       shallowResolvers: {},
       fields: {},
     };
-    const recursiveObj = (object, number = 0) => {
+    const recursiveObj = (object, strName, number = 0) => {
       const keys = Object.keys(object);
       for (let i = 0; i < keys.length; i += 1) {
         if (typeof object[keys[i]] === 'object') {
+          if (analytics.specificResolvers.hasOwnProperty(`${strName}_${keys[i]}`)) {
+            analytics.specificResolvers[`${strName}_${keys[i]}`] += 1;
+          } else {
+            analytics.specificResolvers[`${strName}_${keys[i]}`] = 1;
+          }
           if (analytics.shallowResolvers.hasOwnProperty(keys[i])) {
             analytics.shallowResolvers[keys[i]] += 1;
           } else {
             analytics.shallowResolvers[keys[i]] = 1;
           }
-          recursiveObj(object[keys[i]]);
+          recursiveObj(object[keys[i]], keys[i]);
         } else if (analytics.fields.hasOwnProperty(keys[i])) {
           analytics.fields[keys[i]] += 1;
         } else {
@@ -26,7 +31,7 @@ module.exports = {
         }
       }
     };
-    recursiveObj(object);
+    recursiveObj(object, 'RootQueryType');
     return analytics;
   },
 

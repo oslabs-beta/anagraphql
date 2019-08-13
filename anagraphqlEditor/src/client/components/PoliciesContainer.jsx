@@ -1,24 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import RulesDisplay from './RulesDisplay';
 import RulesConfiguration from './RulesConfiguration';
 import JsonDisplay from './JsonDisplay';
-import { useSelector } from 'react-redux';
+import ApplicableRules from './ApplicableRules';
 
 const PoliciesContainer = () => {
-    const result = useSelector(state => state.rules.currRule);
-    return (
-        <div>
-            <div>
-                <RulesDisplay/>
-            </div>
-            <div>
-                <RulesConfiguration/>
-            </div>
-            <div>
-                <JsonDisplay json={result}/>
-            </div>
-        </div>
-    )
+  const result = useSelector(state => state.rules.currRule);
+  return (
+    <div>
+      <div>
+        <RulesDisplay />
+      </div>
+      <div id="rules-container">
+        <ApplicableRules />
+        <RulesConfiguration />
+        <JsonDisplay json={result} />
+      </div>
+
+    </div>
+  );
 };
 
 export default PoliciesContainer;

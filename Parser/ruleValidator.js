@@ -23,17 +23,14 @@ module.exports = (applicableRules, rules) => {
   }
 
   if (rules.hasOwnProperty('specificResolvers')) {
-    const rulesSpecificResolvers = Object.keys(rules.shallowResolvers);
+    const rulesSpecificResolvers = Object.keys(rules.specificResolvers);
     for (let i = 0; i < rulesSpecificResolvers.length; i += 1) {
-      if (!applicableRules.shallowResolvers.hasOwnProperty(rulesSpecificResolvers[i])) {
+      if (!applicableRules.specificResolvers.hasOwnProperty(rulesSpecificResolvers[i])) {
         validateRules.error = `${rulesSpecificResolvers[i]} is not a shallowResolver rule`;
         return validateRules;
       }
     }
   }
-
-
-  // const resolverFunctions = Object.keys(rules.resolverFunctions);
 
   return validateRules;
 };

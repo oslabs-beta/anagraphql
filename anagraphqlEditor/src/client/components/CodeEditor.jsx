@@ -3,9 +3,8 @@ import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
 import { parse, print } from 'graphql';
 import {
-  updateQuery, getQueryResponse, createAnagraph, updateQueryHistory,
+  updateQuery, getQueryResponse, updateQueryHistory,
 } from '../actions/actions';
-import anagraphCreator from '../utility/anagraphCreator';
 
 import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -31,9 +30,10 @@ import 'codemirror-graphql/mode';
 const CodeEditor = () => {
   const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
 
-  const { query, schema } = useSelector(state => ({
+  const { query, schema, rules } = useSelector(state => ({
     query: state.query.query,
     schema: state.query.schema,
+    rules: state.rules.currRule,
   }));
   const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
@@ -69,16 +69,17 @@ const CodeEditor = () => {
   const handleQuery = () => {
     if (!hasErrors) {
       prettifyQuery();
-      dispatch(getQueryResponse(query));
-      const anagraph = anagraphCreator(query);
-      dispatch(createAnagraph(anagraph));
+      dispatch(getQueryResponse({ query, rules }));
       dispatch(updateQueryHistory(print(parse(query))));
     }
   };
 
   return (
     <div>
-      <div id="sendQuery" />
+
+      <div id="sendQuery">
+        <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
+      </div>
       <CodeMirror
         value={query}
         onKeyUp={(editor, event) => {
