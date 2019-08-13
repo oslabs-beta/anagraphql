@@ -20,12 +20,12 @@ describe('AnagraphCreator', () => {
     expect(anagraph).toHaveProperty('analytics')
   })
 
-  test('analytics property has a property called combinedFields', () => {
-    expect(anagraph.analytics).toHaveProperty('combinedFields')
+  test('analytics property has a property called shallowResolvers', () => {
+    expect(anagraph.analytics).toHaveProperty('shallowResolvers')
   })
 
-  test('analytics property has a property called combinedReducers', () => {
-    expect(anagraph.analytics).toHaveProperty('combinedReducers')
+  test('analytics property has a property called specificResolvers', () => {
+    expect(anagraph.analytics).toHaveProperty('specificResolvers')
   })
 
   test('analytics property has a property called fields', () => {
@@ -36,17 +36,17 @@ describe('AnagraphCreator', () => {
     expect(anagraph.analytics).toHaveProperty('maxNested')
   })
 
-  test('analytics property has a property called resolvers', () => {
-    expect(anagraph.analytics).toHaveProperty('resolvers')
+  test('analytics property has a property called totalFields', () => {
+    expect(anagraph.analytics).toHaveProperty('totalFields')
   })
 
-  // test('the value of anagraph.analytics.combineFields is an number', () => {
-  //   expect(typeof anagraph.analytics.combineFields).toBe('number')
-  // })
+  test('the value of anagraph.analytics.shallowResolvers is an object', () => {
+    expect(typeof anagraph.analytics.shallowResolvers).toBe('object')
+  })
 
-  // test('the value of anagraph.analytics.combineReducers is an number', () => {
-  //   expect(typeof anagraph.analytics.combineReducers).toBe('number')
-  // })
+  test('the value of anagraph.analytics.specificResolvers is an number', () => {
+    expect(typeof anagraph.analytics.specificResolvers).toBe('object')
+  })
 
   test('the value of anagraph.analytics.fields is an object', () => {
     expect(typeof anagraph.analytics.fields).toBe('object')
@@ -56,8 +56,8 @@ describe('AnagraphCreator', () => {
     expect(typeof anagraph.analytics.maxNested).toBe('number')
   })
 
-  test('the value of anagraph.analytics.resolvers is an number', () => {
-    expect(typeof anagraph.analytics.resolvers).toBe('object')
+  test('the value of anagraph.analytics.totalFields is an number', () => {
+    expect(typeof anagraph.analytics.totalFields).toBe('number')
   })
 
 
