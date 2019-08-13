@@ -23,11 +23,12 @@ const responseReducer = (state = initialState, action) => {
     case GET_QUERY_RESPONSE:
       return {
         ...state,
-        currResponse: action.payload,
+        currResponse: { ...action.payload.data },
+        currAnagraph: action.payload.anagraph,
         // responseList: [...state.responseList, action.payload],
         history: {
-          anagraph: [...state.history.anagraph],
-          response: [...state.history.response, action.payload],
+          anagraph: [...state.history.anagraph, action.payload.anagraph],
+          response: [...state.history.response, { ...action.payload.data }],
           query: [...state.history.query],
         },
       };
