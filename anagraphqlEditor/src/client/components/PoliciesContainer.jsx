@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import RulesDisplay from './RulesDisplay';
 import RulesConfiguration from './RulesConfiguration';
 import JsonDisplay from './JsonDisplay';
+import ApplicableRules from './ApplicableRules';
 
 const PoliciesContainer = () => {
   const result = useSelector(state => state.rules.currRule);
@@ -12,6 +13,7 @@ const PoliciesContainer = () => {
         <RulesDisplay />
       </div>
       <div id="rules-container">
+        <ApplicableRules />
         <RulesConfiguration />
         <JsonDisplay json={result} />
       </div>
