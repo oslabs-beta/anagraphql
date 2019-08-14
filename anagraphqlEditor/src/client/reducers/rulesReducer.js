@@ -9,7 +9,8 @@ const initialState = {
     shallowResolvers: {},
     specificResolvers: {},
   },
-  rules: queryRules ? [{ name: 'SERVER CONFIG', rules: queryRules }] : [],
+  SERVER_RULES: queryRules,
+  rules: [],
 };
 
 
