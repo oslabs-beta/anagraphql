@@ -30,12 +30,19 @@ export const getSchema = body => (dispatch) => {
     .then((schema) => {
       dispatch({
         type: types.GET_SCHEMA,
+<<<<<<< HEAD
+        payload: buildClientSchema(schema.data),
+      });
+    })
+    .catch(err => console.log(err));
+=======
         payload: {
           applicableRules: schema.applicableRules,
           schema: buildClientSchema(schema.data),
         },
       });
     });
+>>>>>>> dev
 };
 
 export const updateCurrResponse = resp => ({

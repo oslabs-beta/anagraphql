@@ -19,11 +19,20 @@ const CodeContainer = () => {
         <Headline header="Query" />
         <CodeEditor />
       </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <div id="top">
+        <JsonDisplay json={anagraph} />
+        {/* <JsonDisplay json={queryRules} /> */}
+=======
+      <div className="Response"><JsonDisplay json={response} /></div>
+=======
       <div className="Response">
         <Headline header="Response" />
         <JsonDisplay json={response} />
 
       </div>
+>>>>>>> dev
       <div className="Policies">
 
         <Headline header="Policies" />
@@ -33,7 +42,11 @@ const CodeContainer = () => {
 
         <Headline header="Anagraph" />
         <JsonDisplay json={currAnagraph} />
+<<<<<<< HEAD
+>>>>>>> dev
+=======
 
+>>>>>>> dev
       </div>
     </div>
   );
