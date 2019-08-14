@@ -30,19 +30,12 @@ export const getSchema = body => (dispatch) => {
     .then((schema) => {
       dispatch({
         type: types.GET_SCHEMA,
-<<<<<<< HEAD
-        payload: buildClientSchema(schema.data),
-      });
-    })
-    .catch(err => console.log(err));
-=======
         payload: {
           applicableRules: schema.applicableRules,
           schema: buildClientSchema(schema.data),
         },
       });
     });
->>>>>>> dev
 };
 
 export const updateCurrResponse = resp => ({
@@ -90,10 +83,13 @@ export const updateResolvers = num => ({
   payload: num,
 });
 
-export const updateCurrRule = index => ({
-  type: types.UPDATE_CURR_RULE,
-  payload: index,
-});
+export const updateCurrRule = (rule) => {
+  console.log(rule);
+  return ({
+    type: types.UPDATE_CURR_RULE,
+    payload: rule,
+  });
+};
 
 export const updateShallowResolvers = obj => ({
   type: types.UPDATE_SHALLOW_RESOLVERS,
@@ -108,4 +104,9 @@ export const updateSpecificResolvers = obj => ({
 export const deleteRule = (...params) => ({
   type: types.DELETE_RULE,
   payload: params,
+});
+
+export const updateClientRules = rule => ({
+  type: types.UPDATE_CLIENT_RULES,
+  payload: rule,
 });
