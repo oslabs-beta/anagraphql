@@ -36,19 +36,15 @@ const SideBar = () => {
     {
       path: '/graphql/policies',
       exact: true,
-<<<<<<< HEAD
-      main: () => <PoliciesContainer />,
+      main: () => {
+        if (!useSelector(state => state.query.applicableRules)) return <h4>Loading...</h4>;
+        return <PoliciesContainer />;
+      },
     },
     {
       path: '/graphql/visualizer',
       exact: true,
       main: () => <Visualizer />,
-=======
-      main: () => {
-        if (!useSelector(state => state.query.applicableRules)) return <h4>Loading...</h4>;
-        return <PoliciesContainer />;
-      },
->>>>>>> dev
     },
   ];
   return (
@@ -70,11 +66,7 @@ const SideBar = () => {
             <li><Link to="/graphql">Query</Link></li>
             <li><Link to="/graphql/about">About</Link></li>
             <li><Link to="/graphql/policies">Policies</Link></li>
-<<<<<<< HEAD
             <li><Link to="/graphql/visualizer">Visualizer</Link></li>
-
-=======
->>>>>>> dev
           </ul>
         </div>
         <div style={{
