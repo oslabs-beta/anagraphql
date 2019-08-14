@@ -35,6 +35,7 @@ const CodeEditor = () => {
     schema: state.query.schema,
     rules: state.rules.currRule,
   }));
+
   const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
