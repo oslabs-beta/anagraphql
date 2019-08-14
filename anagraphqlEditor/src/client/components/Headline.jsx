@@ -1,45 +1,12 @@
 import React from 'react';
+import PolicySelector from './PolicySelector';
 
-export default function Headline({ header, handleQuery, hasErrors }) {
-  if (handleQuery) {
+export default function Headline({ header }) {
+  if (header === 'Policies') {
     return (
-      <div id="sendQuery">
+      <div id="policy-options">
         <h2>{header}</h2>
-        <div id="btn-container">
-          <div id="options">
-            <div>
-              <input
-                type="radio"
-                id="server"
-                name="drone"
-                value="SERVER"
-                checked
-              />
-              <label htmlFor="server">Server Rules</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="client"
-                name="drone"
-                value="CLIENT"
-                checked
-              />
-              <label htmlFor="client">Client Rules</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="merge"
-                name="drone"
-                value="MERGE"
-                checked
-              />
-              <label htmlFor="merge">Merge Rules</label>
-            </div>
-          </div>
-          <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
-        </div>
+        <PolicySelector />
       </div>
     );
   }
