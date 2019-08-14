@@ -3,6 +3,34 @@
     display:flex;
 }
 
+.rule-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+  padding: 0 18px;
+  background-color: #f1f1f1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+
 #rules-container {
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
@@ -28,7 +56,7 @@
 }
 .CodeMirror {
     border: 1px solid #eee;
-    height: 100%;
+    /* height: 100%; */
   }
 
 body {
@@ -40,9 +68,15 @@ body {
     font-family: 'Montserrat', sans-serif;
 
 }
-#sendQuery{
+#policy-options{
     display:grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
+}
+
+.radio-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #btn-container{
