@@ -12,11 +12,10 @@ import Headline from './Headline';
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
   const currAnagraph = useSelector(state => state.response.currAnagraph);
-  const { currRule, SERVER_RULES } = useSelector(state => state.rules);
+  const { currRule } = useSelector(state => state.rules);
   const { query } = useSelector(state => state.query);
 
   const [hasErrors, setErrors] = useState(true);
-  const [option, setOption] = useState('SERVER');
   const dispatch = useDispatch();
 
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
@@ -24,36 +23,7 @@ const CodeContainer = () => {
   const handleQuery = () => {
     if (!hasErrors) {
       prettifyQuery();
-      let payload;
-      switch (option) {
-        case 'SERVER':
-          payload = { query, currRule: SERVER_RULES };
-          break;
-        case 'CLIENT':
-          payload = { query, currRule };
-          break;
-        case 'MERGE':
-          payload = {
-            query,
-            currRule: {
-              ...SERVER_RULES,
-              ...currRule,
-              shallowResolvers: {
-                ...SERVER_RULES.shallowResolvers,
-                ...currRule.shallowResolvers,
-              },
-              specificResolvers: {
-                ...SERVER_RULES.specificResolvers,
-                ...currRule.specificResolvers,
-              },
-            },
-          };
-          break;
-        default:
-          payload = { query, currRule };
-      }
-      console.log(payload);
-      dispatch(getQueryResponse(payload));
+      dispatch(getQueryResponse({ query, currRule }));
       dispatch(updateQueryHistory(print(parse(query))));
     }
   };
@@ -62,40 +32,27 @@ const CodeContainer = () => {
     <div className="grid-container">
       <div className="Timeline">
         <Headline header="Timeline" />
-        <History />
+        <History handleQuery={handleQuery} hasErrors={hasErrors} />
       </div>
+
       <div className="GraphQL-Query">
-        <Headline header="Query" handleQuery={handleQuery} hasErrors={hasErrors} setOption={setOption} />
+        <Headline header="Query" />
         <CodeEditor hasErrors={hasErrors} setErrors={setErrors} prettifyQuery={prettifyQuery} />
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <div id="top">
-        <JsonDisplay json={anagraph} />
-        {/* <JsonDisplay json={queryRules} /> */}
-=======
-      <div className="Response"><JsonDisplay json={response} /></div>
-=======
+
       <div className="Response">
         <Headline header="Response" />
         <JsonDisplay json={response} />
-
       </div>
->>>>>>> dev
-      <div className="Policies">
 
+      <div className="Policies">
         <Headline header="Policies" />
         <JsonDisplay json={currRule} />
       </div>
-      <div className="Anagraph">
 
+      <div className="Anagraph">
         <Headline header="Anagraph" />
         <JsonDisplay json={currAnagraph} />
-<<<<<<< HEAD
->>>>>>> dev
-=======
-
->>>>>>> dev
       </div>
     </div>
   );
