@@ -16,7 +16,7 @@ const CodeContainer = () => {
   const { query } = useSelector(state => state.query);
 
   const [hasErrors, setErrors] = useState(true);
-  const [merge, setMerge] = useState(true);
+  const [option, setOption] = useState('SERVER');
   const dispatch = useDispatch();
 
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
@@ -24,7 +24,34 @@ const CodeContainer = () => {
   const handleQuery = () => {
     if (!hasErrors) {
       prettifyQuery();
-      const payload = merge ? { query, currRule: { ...SERVER_RULES.rules, ...currRule } } : { query, currRule };
+      let payload;
+      switch (option) {
+        case 'SERVER':
+          payload = { query, currRule: SERVER_RULES };
+          break;
+        case 'CLIENT':
+          payload = { query, currRule };
+          break;
+        case 'MERGE':
+          payload = {
+            query,
+            currRule: {
+              ...SERVER_RULES,
+              ...currRule,
+              shallowResolvers: {
+                ...SERVER_RULES.shallowResolvers,
+                ...currRule.shallowResolvers,
+              },
+              specificResolvers: {
+                ...SERVER_RULES.specificResolvers,
+                ...currRule.specificResolvers,
+              },
+            },
+          };
+          break;
+        default:
+          payload = { query, currRule };
+      }
       console.log(payload);
       dispatch(getQueryResponse(payload));
       dispatch(updateQueryHistory(print(parse(query))));
@@ -38,8 +65,8 @@ const CodeContainer = () => {
         <History />
       </div>
       <div className="GraphQL-Query">
+        <Headline header="Query" handleQuery={handleQuery} hasErrors={hasErrors} setOption={setOption} />
         <CodeEditor hasErrors={hasErrors} setErrors={setErrors} prettifyQuery={prettifyQuery} />
-        <Headline header="Query" />
       </div>
       <div className="Response">
         <Headline header="Response" />

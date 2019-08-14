@@ -38,8 +38,20 @@ body {
 
 }
 #sendQuery{
-    text-align: center;
+    display:grid;
+    grid-template-columns: 30% 70%;
 }
+
+#btn-container{
+    display:grid;
+    grid-template-rows: 50% 50%;
+}
+
+#options{
+    display:grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
 
 
 
