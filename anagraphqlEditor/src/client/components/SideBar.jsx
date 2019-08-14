@@ -25,6 +25,7 @@ const SideBar = () => {
       main: () => (
         <ReactMarkdown
           source={readMe}
+          className="about"
           renderers={{
             code: CodeBlock,
           }}
@@ -51,7 +52,7 @@ const SideBar = () => {
             borderRight: 'border-left: 1px solid #bbb',
           }}
         >
-          <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
+          <img src="https://i.ibb.co/c6WWqb1/anagraph-logo-whitespace-small.jpg" alt="Anagraph Logo" height="80px" />
           <ul style={{
             listStyleType: 'none', padding: 0, height: '500px', width: '200px',
           }}

@@ -12,6 +12,9 @@
     border-style: solid;
     border-width: medium;
 }
+.about {
+    padding: 10px;
+}
 
 #rules {
     display:flex;
@@ -67,8 +70,10 @@ body {
 
 .timelineFlex {
     width: 100%;
+    padding-left: 12px;
     display: flex;
     justify-content: space-between;
+
 
 }
 
@@ -119,7 +124,9 @@ h2.query {
     height: 50px !important;
 }
 #timeline{ direction: rtl}
-
+.policiesContainer{
+    padding: 10px;
+}
 option {
     size: 30px;
     color: green;
