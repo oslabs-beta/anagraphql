@@ -8,7 +8,7 @@ import ApplicableRules from './ApplicableRules';
 const PoliciesContainer = () => {
   const result = useSelector(state => state.rules.currRule);
   return (
-    <div>
+    <div className="policiesContainer">
       <div>
         <RulesDisplay />
       </div>
@@ -17,7 +17,6 @@ const PoliciesContainer = () => {
         <RulesConfiguration />
         <JsonDisplay json={result} />
       </div>
-
     </div>
   );
 };
