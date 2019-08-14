@@ -31,7 +31,6 @@ const CodeEditor = ({ hasErrors, setErrors, prettifyQuery }) => {
     query: state.query.query,
     schema: state.query.schema,
   }));
-  // const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
   const options = {
     lineNumbers: true,

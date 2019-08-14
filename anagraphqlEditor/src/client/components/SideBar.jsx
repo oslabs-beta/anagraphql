@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
 import CodeContainer from './CodeContainer';
+import Visualizer from './Visualizer';
 import PoliciesContainer from './PoliciesContainer';
 
 const SideBar = () => {
@@ -25,6 +26,7 @@ const SideBar = () => {
       main: () => (
         <ReactMarkdown
           source={readMe}
+          className="about"
           renderers={{
             code: CodeBlock,
           }}
@@ -34,10 +36,19 @@ const SideBar = () => {
     {
       path: '/graphql/policies',
       exact: true,
+<<<<<<< HEAD
+      main: () => <PoliciesContainer />,
+    },
+    {
+      path: '/graphql/visualizer',
+      exact: true,
+      main: () => <Visualizer />,
+=======
       main: () => {
         if (!useSelector(state => state.query.applicableRules)) return <h4>Loading...</h4>;
         return <PoliciesContainer />;
       },
+>>>>>>> dev
     },
   ];
   return (
@@ -51,7 +62,7 @@ const SideBar = () => {
             borderRight: 'border-left: 1px solid #bbb',
           }}
         >
-          <img src="https://i.ibb.co/fHF00bd/IMG-0672.jpg" alt="Anagraph Logo" height="300px" />
+          <img src="https://i.ibb.co/c6WWqb1/anagraph-logo-whitespace-small.jpg" alt="Anagraph Logo" height="80px" />
           <ul style={{
             listStyleType: 'none', padding: 0, height: '500px', width: '200px',
           }}
@@ -59,6 +70,11 @@ const SideBar = () => {
             <li><Link to="/graphql">Query</Link></li>
             <li><Link to="/graphql/about">About</Link></li>
             <li><Link to="/graphql/policies">Policies</Link></li>
+<<<<<<< HEAD
+            <li><Link to="/graphql/visualizer">Visualizer</Link></li>
+
+=======
+>>>>>>> dev
           </ul>
         </div>
         <div style={{
