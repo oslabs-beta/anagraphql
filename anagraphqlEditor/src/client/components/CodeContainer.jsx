@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import CodeEditor from './CodeEditor';
 import JsonDisplay from './JsonDisplay';
 import History from './History';
+import Headline from './Headline';
 // import MainContainer from "./containers/MainContainer.jsx";
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
@@ -11,22 +12,40 @@ const CodeContainer = () => {
   return (
     <div className="grid-container">
       <div className="Timeline">
+        <Headline header="Timeline" />
         <History />
       </div>
       <div className="GraphQL-Query">
+        <Headline header="Query" />
         <CodeEditor />
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div id="top">
         <JsonDisplay json={anagraph} />
         {/* <JsonDisplay json={queryRules} /> */}
 =======
       <div className="Response"><JsonDisplay json={response} /></div>
+=======
+      <div className="Response">
+        <Headline header="Response" />
+        <JsonDisplay json={response} />
+
+      </div>
+>>>>>>> dev
       <div className="Policies">
+
+        <Headline header="Policies" />
         <JsonDisplay json={currRule} />
       </div>
       <div className="Anagraph">
+
+        <Headline header="Anagraph" />
         <JsonDisplay json={currAnagraph} />
+<<<<<<< HEAD
+>>>>>>> dev
+=======
+
 >>>>>>> dev
       </div>
     </div>
