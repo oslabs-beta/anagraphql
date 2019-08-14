@@ -1,0 +1,52 @@
+{
+  "name": "anagraphqlEditor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "NODE_ENV=development webpack-dev-server --open",
+    "build": "NODE_ENV=production webpack",
+    "start":"bash buildRun.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "codemirror": "^5.48.2",
+    "codemirror-graphql": "^0.8.3",
+    "d3": "^5.9.7",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "graphql-language-service-parser": "^1.2.2",
+    "react": "^16.8.6",
+    "react-animated-css": "^1.2.1",
+    "react-codemirror2": "^6.0.0",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-syntax-highlighter": "^11.0.2",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.37.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}

@@ -1,0 +1,160 @@
+
+.history{
+    display:flex;
+}
+
+#rules-container {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.json-title {
+    border-style: solid;
+    border-width: medium;
+}
+.about {
+    padding: 10px;
+}
+
+#rules {
+    display:flex;
+    flex-direction: column;
+}
+.current {
+    border-width: 2px;
+   border-bottom-width:2px;
+   border-bottom-color:Black;
+   border-bottom-style: solid;
+}
+.CodeMirror {
+    border: 1px solid #eee;
+    height: 100%;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #333;
+    background-color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+
+}
+#sendQuery{
+    text-align: center;
+}
+
+
+
+#top{
+    display:grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+#title {
+    text-align: center;
+}
+
+#nav {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #FAFAFA;
+    height: 100vh;
+    border-right: 1px solid #bbb;
+    /* overflow: auto; */
+    /* box-shadow: inset -4px 0px 15px #967d7d; */
+
+}
+
+.timelineFlex {
+    width: 100%;
+    padding-left: 12px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+#nav img{
+    max-width: 100%;
+    max-height:8rem;
+     display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.6;
+}
+
+#nav a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    text-shadow: 2px;
+    text-align: center;
+    /* box-shadow: 0 5px #775d5d; */
+    transform: translateY(40px);
+    font-size: 20px;
+    padding-top: 15px;
+
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    background-color: #FAFAFA;
+    color: #666;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3vh;
+}
+
+h2.query {
+    background-color: #FAFAFA;
+    color: #222;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 3vh;
+}
+
+.historyTimeline {
+    width: 90% !important;
+    height: 50px !important;
+}
+#timeline{ direction: rtl}
+.policiesContainer{
+    padding: 10px;
+}
+option {
+    size: 30px;
+    color: green;
+}
+.marker {
+    padding: 5px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.historySlider  {
+    text-align: center;
+    width: 90%;
+}
+
+
+.grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5fr 5fr 2fr;
+    grid-template-areas: "GraphQL-Query Response" "Anagraph Policies" "Timeline Timeline";
+  }
+
+  .Timeline { grid-area: Timeline;  border-top: 1px solid #bbb;}
+  .GraphQL-Query { grid-area: GraphQL-Query; border-bottom: 1px solid #bbb;}
+  .Response { grid-area: Response; border-left: 1px solid #bbb;  border-bottom: 1px solid #bbb; }
+  .Policies { grid-area: Policies; border-left: 1px solid #bbb;}
+  .Anagraph { grid-area: Anagraph; }
