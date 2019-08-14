@@ -11,10 +11,11 @@ import History from './History';
 const CodeContainer = () => {
   const response = useSelector(state => state.response.currResponse);
   const currAnagraph = useSelector(state => state.response.currAnagraph);
-  const currRule = useSelector(state => state.rules.currRule);
+  const { currRule, SERVER_RULES } = useSelector(state => state.rules);
   const { query } = useSelector(state => state.query);
 
   const [hasErrors, setErrors] = useState(true);
+  const [merge, setMerge] = useState(true);
   const dispatch = useDispatch();
 
   const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
@@ -22,7 +23,9 @@ const CodeContainer = () => {
   const handleQuery = () => {
     if (!hasErrors) {
       prettifyQuery();
-      dispatch(getQueryResponse({ query, currRule }));
+      const payload = merge ? { query, currRule: { ...SERVER_RULES.rules, ...currRule } } : { query, currRule };
+      console.log(payload);
+      dispatch(getQueryResponse(payload));
       dispatch(updateQueryHistory(print(parse(query))));
     }
   };
@@ -36,7 +39,7 @@ const CodeContainer = () => {
         <History />
       </div>
       <div className="GraphQL-Query">
-        <CodeEditor hasErrors={hasErrors} setErrors={setErrors} prettifyQuery={pret} />
+        <CodeEditor hasErrors={hasErrors} setErrors={setErrors} prettifyQuery={prettifyQuery} />
       </div>
       <div className="Response"><JsonDisplay json={response} /></div>
       <div className="Policies">
