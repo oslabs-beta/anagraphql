@@ -55,7 +55,7 @@ const CodeEditor = ({ hasErrors, setErrors, prettifyQuery }) => {
     },
     extraKeys: {
       'Alt-P': () => {
-        if (!hasErrors)prettifyQuery();
+        if (!hasErrors) prettifyQuery();
       },
     },
     theme: 'default',
@@ -64,7 +64,6 @@ const CodeEditor = ({ hasErrors, setErrors, prettifyQuery }) => {
 
   return (
     <div>
-
       <CodeMirror
         value={query}
         onKeyUp={(editor, event) => {
@@ -76,6 +75,7 @@ const CodeEditor = ({ hasErrors, setErrors, prettifyQuery }) => {
         onUpdate={editor => setErrors(editor.state.lint.marked.length !== 0)}
         options={options}
       />
+
     </div>
   );
 };
