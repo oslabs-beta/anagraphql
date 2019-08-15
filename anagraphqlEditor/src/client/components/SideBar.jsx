@@ -58,7 +58,7 @@ const SideBar = () => {
             borderRight: 'border-left: 1px solid #bbb',
           }}
         >
-          <img src="https://i.ibb.co/c6WWqb1/anagraph-logo-whitespace-small.jpg" alt="Anagraph Logo" height="80px" />
+          <img src="https://i.ibb.co/XX4cBtX/anagraph-logo.png" alt="Anagraph Logo" height="80px" />
           <ul style={{
             listStyleType: 'none', padding: 0, height: '500px', width: '200px',
           }}
