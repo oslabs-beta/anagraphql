@@ -23,7 +23,7 @@ const rules = {
 
 app.use('/graphql',
   (req, res, next) => next(),
-  anagraphql({ schema, rules, graphiql: true }),
+  anagraphql({ schema, rules, playground: true }),
   graphqlHTTP({
     schema,
     // graphiql: true,

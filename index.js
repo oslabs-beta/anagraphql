@@ -12,11 +12,11 @@ const anagraphql = options => ((req, res, next) => {
     res.end();
   }
 
-  const { schema, graphiql, rules } = options;
+  const { schema, playground, rules } = options;
   if (!schema) throw new Error('GraphQL middleware options must contain a schema.');
   const applicableRules = schemaParser(schema);
 
-  if (req.body.operationName !== undefined && graphiql) {
+  if (req.body.operationName !== undefined && playground) {
     const oldSend = res.send;
     res.send = function (...data) {
       // arguments[0] (or `data`) contains the response body
@@ -28,8 +28,8 @@ const anagraphql = options => ((req, res, next) => {
   }
 
 
-  if (graphiql && req.method === 'GET') {
-    if (!graphiql) return next();
+  if (playground && req.method === 'GET') {
+    if (!playground) return next();
     if (rules === undefined) res.send(renderGraphiql());
     if (rules) res.send(renderGraphiql(rules));
     return res.end();
@@ -54,7 +54,7 @@ const anagraphql = options => ((req, res, next) => {
     }
 
 
-    if (graphiql) {
+    if (playground) {
       const oldSend = res.send;
       res.send = function(...data){
       // arguments[0] (or `data`) contains the response body
