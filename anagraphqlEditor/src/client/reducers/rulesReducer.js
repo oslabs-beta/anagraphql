@@ -1,7 +1,7 @@
 import {
   UPDATE_CURR_RULE, SAVE_CONFIGURATION, UPDATE_NESTED_QUERIES,
   UPDATE_RESOLVERS, UPDATE_FIELDS, UPDATE_SHALLOW_RESOLVERS,
-  UPDATE_SPECIFIC_RESOLVERS, DELETE_RULE,
+  UPDATE_SPECIFIC_RESOLVERS, DELETE_RULE, UPDATE_CLIENT_RULES,
 } from '../constants/actionTypes';
 
 const initialState = {
@@ -9,7 +9,15 @@ const initialState = {
     shallowResolvers: {},
     specificResolvers: {},
   },
-  rules: queryRules ? [{ name: 'SERVER CONFIG', rules: queryRules }] : [],
+  CLIENT_RULES: {
+    shallowResolvers: {},
+    specificResolvers: {},
+  },
+  SERVER_RULES: queryRules || {
+    shallowResolvers: {},
+    specificResolvers: {},
+  },
+  rules: [],
 };
 
 
@@ -23,66 +31,71 @@ const rulesReducer = (state = initialState, action) => {
     case UPDATE_CURR_RULE:
       return {
         ...state,
-        currRule: { ...state.rules[action.payload].rules },
+        currRule: action.payload,
       };
     case UPDATE_NESTED_QUERIES:
       return {
         ...state,
-        currRule: {
-          ...state.currRule,
+        CLIENT_RULES: {
+          ...state.CLIENT_RULES,
           maxNested: action.payload,
         },
       };
     case UPDATE_FIELDS:
       return {
         ...state,
-        currRule: {
-          ...state.currRule,
+        CLIENT_RULES: {
+          ...state.CLIENT_RULES,
           totalFields: action.payload,
         },
       };
     case UPDATE_RESOLVERS:
       return {
         ...state,
-        currRule: {
-          ...state.currRule,
+        CLIENT_RULES: {
+          ...state.CLIENT_RULES,
           totalResolvers: action.payload,
         },
       };
     case UPDATE_SHALLOW_RESOLVERS:
       return {
         ...state,
-        currRule: {
-          ...state.currRule,
-          shallowResolvers: { ...state.currRule.shallowResolvers, ...action.payload },
+        CLIENT_RULES: {
+          ...state.CLIENT_RULES,
+          shallowResolvers: { ...state.CLIENT_RULES.shallowResolvers, ...action.payload },
         },
       };
     case UPDATE_SPECIFIC_RESOLVERS:
       return {
         ...state,
-        currRule: {
-          ...state.currRule,
-          specificResolvers: { ...state.currRule.specificResolvers, ...action.payload },
+        CLIENT_RULES: {
+          ...state.CLIENT_RULES,
+          specificResolvers: { ...state.CLIENT_RULES.specificResolvers, ...action.payload },
         },
       };
     case DELETE_RULE: {
       if (action.payload.length === 2) {
         const temp = {};
-        temp[action.payload[0]] = { ...state.currRule[action.payload[0]] };
+        temp[action.payload[0]] = { ...state.CLIENT_RULES[action.payload[0]] };
         delete temp[action.payload[0]][action.payload[1]];
         return {
           ...state,
-          currRule: {
-            ...state.currRule,
+          CLIENT_RULES: {
+            ...state.CLIENT_RULES,
             ...temp,
           },
         };
       }
 
-      const temp = { ...state, currRule: { ...state.currRule } };
-      delete temp.currRule[action.payload[0]];
+      const temp = { ...state, CLIENT_RULES: { ...state.CLIENT_RULES } };
+      delete temp.CLIENT_RULES[action.payload[0]];
       return temp;
     }
+    case UPDATE_CLIENT_RULES:
+      return {
+        ...state,
+        CLIENT_RULES: action.payload,
+      };
     default:
       return state;
   }

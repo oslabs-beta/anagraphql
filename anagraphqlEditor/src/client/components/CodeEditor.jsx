@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import { useSelector, useDispatch } from 'react-redux';
-import { parse, print } from 'graphql';
-import {
-  updateQuery, getQueryResponse, updateQueryHistory,
-} from '../actions/actions';
+import { updateQuery } from '../actions/actions';
 
 import 'codemirror/lib/codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -27,18 +24,14 @@ import 'codemirror-graphql/info';
 import 'codemirror-graphql/jump';
 import 'codemirror-graphql/mode';
 
-const CodeEditor = () => {
+const CodeEditor = ({ hasErrors, setErrors, prettifyQuery }) => {
   const AUTO_COMPLETE_AFTER_KEY = /^[a-zA-Z0-9_@(]$/;
 
-  const { query, schema, rules } = useSelector(state => ({
+  const { query, schema } = useSelector(state => ({
     query: state.query.query,
     schema: state.query.schema,
-    rules: state.rules.currRule,
   }));
-
-  const [hasErrors, setErrors] = useState(true);
   const dispatch = useDispatch();
-  const prettifyQuery = () => dispatch(updateQuery(print(parse(query))));
   const options = {
     lineNumbers: true,
     tabSize: 2,
@@ -67,13 +60,6 @@ const CodeEditor = () => {
     theme: 'default',
   };
 
-  const handleQuery = () => {
-    if (!hasErrors) {
-      prettifyQuery();
-      dispatch(getQueryResponse({ query, rules }));
-      dispatch(updateQueryHistory(print(parse(query))));
-    }
-  };
 
   return (
     <div>
@@ -89,7 +75,6 @@ const CodeEditor = () => {
         options={options}
       />
 
-      <button type="button" onClick={handleQuery} disabled={hasErrors} style={{ cursor: 'grab' }}>Send Query</button>
     </div>
   );
 };
