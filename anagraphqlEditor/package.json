@@ -46,7 +46,7 @@
     "nodemon": "^1.19.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.37.0",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2"
   }
 }
